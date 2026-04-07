@@ -1,0 +1,1893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forms Pattern Library — GovTech Barbados</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300..900&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwindcss.config = {
+    theme: {
+      extend: {
+        colors: {
+          'bb-yellow-00': '#e8a833',
+          'bb-yellow-100': '#ffc726',
+          'bb-yellow-40': '#ffe9a8',
+          'bb-yellow-10': '#fff9e9',
+          'bb-blue-00': '#00164a',
+          'bb-blue-100': '#00267f',
+          'bb-blue-40': '#99a8cc',
+          'bb-blue-10': '#e5e9f2',
+          'bb-black-00': '#000000',
+          'bb-mid-grey-00': '#595959',
+          'bb-grey-00': '#e0e4e9',
+          'bb-white-00': '#ffffff',
+          'bb-green-00': '#00654a',
+          'bb-green-100': '#1fbf84',
+          'bb-green-40': '#a5e5ce',
+          'bb-green-10': '#e9f9f3',
+          'bb-red-00': '#a42c2c',
+          'bb-red-100': '#ff6b6b',
+          'bb-red-40': '#ffc4c4',
+          'bb-red-10': '#fff0f0',
+          'bb-teal-00': '#0e5f64',
+          'bb-teal-100': '#30c0c8',
+          'bb-teal-40': '#ace6e9',
+          'bb-teal-10': '#eaf9f9',
+          'bb-purple-00': '#4a235a',
+          'bb-purple-100': '#a962c7',
+          'bb-pink-00': '#ad1157',
+          'bb-pink-100': '#ff94d9',
+        },
+        fontFamily: {
+          sans: ['Figtree', '-apple-system', 'system-ui', '"Segoe UI"', 'Roboto', 'sans-serif'],
+        },
+        spacing: {
+          'xs': '0.5rem',
+          's': '1rem',
+          'xm': '1.5rem',
+          'm': '2rem',
+          'l': '4rem',
+          'xl': '8rem',
+        },
+        borderRadius: {
+          'sm': '0.25rem',
+          'md': '0.375rem',
+          'lg': '0.5rem',
+        },
+        boxShadow: {
+          'form-hover': 'inset 4px 4px 0px 0px rgba(0,0,0,0.1)',
+        },
+      },
+    },
+  }
+</script>
+<style>
+  /* ── Base ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: Figtree, -apple-system, "system-ui", "Segoe UI", Roboto, sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    background: #ffffff;
+    color: #000000;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Design-system token variables ── */
+  :root {
+    --bb-blue-100:    #00267f;
+    --bb-blue-10:     #e5e9f2;
+    --bb-blue-40:     #99a8cc;
+    --bb-yellow-100:  #ffc726;
+    --bb-yellow-10:   #fff9e9;
+    --bb-yellow-00:   #e8a833;
+    --bb-teal-00:     #0e5f64;
+    --bb-teal-100:    #30c0c8;
+    --bb-teal-10:     #eaf9f9;
+    --bb-green-00:    #00654a;
+    --bb-green-10:    #e9f9f3;
+    --bb-red-00:      #a42c2c;
+    --bb-red-10:      #fff0f0;
+    --bb-black-00:    #000000;
+    --bb-mid-grey-00: #595959;
+    --bb-grey-00:     #e0e4e9;
+    --bb-white-00:    #ffffff;
+    --spacing-xs: 0.5rem;
+    --spacing-s:  1rem;
+    --spacing-xm: 1.5rem;
+    --spacing-m:  2rem;
+    --radius-sm:  0.25rem;
+    --radius-md:  0.375rem;
+    --radius-lg:  0.5rem;
+  }
+
+  /* ── Container ── */
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+
+  /* ── Layout ── */
+  .page-layout {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.5rem 1rem 4rem;
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  /* ── Sidebar ── */
+  .sidebar { position: sticky; top: 1rem; }
+  .sidebar-card {
+    background: var(--bb-white-00);
+    border: 1px solid var(--bb-grey-00);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin-bottom: 1rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+  .sidebar-card h3 {
+    background: var(--bb-blue-100);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.625rem 0.875rem;
+  }
+  .sidebar-card ul { list-style: none; padding: 0.5rem 0; }
+  .sidebar-card ul li a,
+  .sidebar-card ul li button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0.875rem;
+    color: var(--bb-mid-grey-00);
+    text-decoration: none;
+    font-size: 0.875rem;
+    border: none;
+    background: none;
+    width: 100%;
+    cursor: pointer;
+    transition: background 0.15s;
+    text-align: left;
+    font-family: inherit;
+  }
+  .sidebar-card ul li a:hover,
+  .sidebar-card ul li button:hover { background: var(--bb-blue-10); }
+  .sidebar-card ul li.active a,
+  .sidebar-card ul li.active button {
+    background: var(--bb-teal-10);
+    color: var(--bb-teal-00);
+    font-weight: 700;
+  }
+  .count-badge {
+    background: var(--bb-grey-00);
+    color: var(--bb-mid-grey-00);
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 1px 8px;
+    min-width: 28px;
+    text-align: center;
+  }
+  .active .count-badge { background: var(--bb-teal-00); color: white; }
+
+  /* ── Search ── */
+  .search-wrap {
+    background: white;
+    border: 1px solid var(--bb-grey-00);
+    border-radius: var(--radius-md);
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+  .search-wrap input {
+    width: 100%;
+    border: 2px solid var(--bb-black-00);
+    border-radius: var(--radius-sm);
+    padding: 0.625rem 0.875rem;
+    font-size: 1rem;
+    font-family: Figtree, sans-serif;
+    color: var(--bb-black-00);
+    outline: none;
+    background: var(--bb-white-00);
+    transition: box-shadow 0.15s;
+  }
+  .search-wrap input:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px var(--bb-teal-100);
+  }
+  .search-wrap input::placeholder { color: rgba(0,0,0,0.45); }
+
+  /* ── Stats bar ── */
+  .stats-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+  }
+  .stat-card {
+    background: white;
+    border: 1px solid var(--bb-grey-00);
+    border-radius: var(--radius-md);
+    padding: 0.875rem 1rem;
+    text-align: center;
+    cursor: pointer;
+    border-top: 4px solid var(--bb-grey-00);
+    transition: border-color 0.15s, box-shadow 0.15s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+  .stat-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.12); }
+  .stat-card .stat-num {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--bb-blue-100);
+    line-height: 1;
+  }
+  .stat-card .stat-label { font-size: 0.8125rem; color: var(--bb-mid-grey-00); margin-top: 0.25rem; }
+  .stat-card.standard { border-top-color: var(--bb-green-00); }
+  .stat-card.standard .stat-num { color: var(--bb-green-00); }
+  .stat-card.emerging { border-top-color: var(--bb-yellow-00); }
+  .stat-card.emerging .stat-num { color: var(--bb-yellow-00); }
+  .stat-card.new-p { border-top-color: var(--bb-red-00); }
+  .stat-card.new-p .stat-num { color: var(--bb-red-00); }
+
+  /* ── Pattern cards ── */
+  .pattern-list { display: flex; flex-direction: column; gap: 0.75rem; }
+  .pattern-card {
+    background: white;
+    border: 1px solid var(--bb-grey-00);
+    border-radius: var(--radius-md);
+    border-left: 5px solid var(--bb-grey-00);
+    overflow: hidden;
+    transition: box-shadow 0.15s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  .pattern-card:hover { box-shadow: 0 3px 12px rgba(0,0,0,0.1); }
+  .pattern-card.standard { border-left-color: var(--bb-green-00); }
+  .pattern-card.emerging { border-left-color: var(--bb-yellow-00); }
+  .pattern-card.new-p { border-left-color: var(--bb-red-00); }
+
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 1rem 1.125rem 0.875rem;
+    cursor: pointer;
+    gap: 0.75rem;
+  }
+  .card-header:hover { background: var(--bb-blue-10); }
+  .card-left { flex: 1; }
+  .card-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.375rem;
+  }
+  .card-id {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    color: var(--bb-mid-grey-00);
+    letter-spacing: 0.06em;
+    font-family: monospace;
+    background: var(--bb-blue-10);
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+  }
+  .status-badge {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 12px;
+    letter-spacing: 0.04em;
+  }
+  .status-badge.standard { background: var(--bb-green-10); color: var(--bb-green-00); }
+  .status-badge.emerging { background: var(--bb-yellow-10); color: var(--bb-yellow-00); }
+  .status-badge.new-p { background: var(--bb-red-10); color: var(--bb-red-00); }
+  .category-tag {
+    font-size: 0.6875rem;
+    color: var(--bb-mid-grey-00);
+    background: var(--bb-blue-10);
+    border-radius: var(--radius-sm);
+    padding: 2px 7px;
+  }
+  .card-title { font-size: 1rem; font-weight: 700; color: var(--bb-black-00); margin-bottom: 0.25rem; }
+  .card-summary { font-size: 0.875rem; color: var(--bb-mid-grey-00); line-height: 1.5; }
+  .card-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+    flex-shrink: 0;
+  }
+  .occurrence-pill {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--bb-blue-100);
+    background: var(--bb-blue-10);
+    border-radius: 12px;
+    padding: 3px 10px;
+    white-space: nowrap;
+  }
+  .expand-icon { color: var(--bb-mid-grey-00); font-size: 1.125rem; transition: transform 0.2s; line-height: 1; }
+  .card-header.open .expand-icon { transform: rotate(180deg); }
+
+  /* ── Card body ── */
+  .card-body { display: none; padding: 0 1.125rem 1.25rem; border-top: 1px solid var(--bb-grey-00); }
+  .card-body.open { display: block; }
+  .card-body h4 {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--bb-mid-grey-00);
+    margin: 1rem 0 0.5rem;
+  }
+  .forms-list { display: flex; flex-wrap: wrap; gap: 0.375rem; margin-bottom: 0.25rem; }
+  .form-chip {
+    font-size: 0.75rem;
+    background: var(--bb-teal-10);
+    color: var(--bb-teal-00);
+    border-radius: var(--radius-sm);
+    padding: 3px 9px;
+    font-weight: 600;
+  }
+
+  /* ── Field table ── */
+  .field-table { width: 100%; border-collapse: collapse; font-size: 0.8125rem; margin-top: 0.25rem; }
+  .field-table th {
+    background: var(--bb-blue-100);
+    color: white;
+    text-align: left;
+    padding: 7px 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+  .field-table td {
+    padding: 0.5rem 0.625rem;
+    border-bottom: 1px solid var(--bb-grey-00);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  .field-table tr:last-child td { border-bottom: none; }
+  .field-table tr:nth-child(even) td { background: var(--bb-blue-10); }
+  .required-yes { color: var(--bb-green-00); font-weight: 700; }
+  .required-no { color: var(--bb-mid-grey-00); }
+  .required-cond { color: var(--bb-yellow-00); font-weight: 700; }
+
+  /* ── Note boxes ── */
+  .note-box {
+    background: var(--bb-yellow-10);
+    border-left: 4px solid var(--bb-yellow-100);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    padding: 0.625rem 0.875rem;
+    font-size: 0.8125rem;
+    margin-top: 0.25rem;
+    color: var(--bb-black-00);
+  }
+  .flag-box {
+    background: var(--bb-red-10);
+    border-left: 4px solid var(--bb-red-00);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    padding: 0.625rem 0.875rem;
+    font-size: 0.8125rem;
+    margin-top: 0.25rem;
+    color: var(--bb-red-00);
+  }
+  .promote-box {
+    background: var(--bb-green-10);
+    border-left: 4px solid var(--bb-green-00);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    padding: 0.625rem 0.875rem;
+    font-size: 0.8125rem;
+    margin-top: 0.25rem;
+    color: var(--bb-green-00);
+  }
+
+  /* ── Decision log link ── */
+  .dl-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--bb-teal-00);
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    margin-top: 0.75rem;
+    padding: 6px 12px;
+    border: 2px solid var(--bb-teal-00);
+    border-radius: var(--radius-sm);
+    transition: background 0.15s;
+    outline: none;
+  }
+  .dl-link:hover { background: var(--bb-teal-10); text-decoration: none; }
+  .dl-link:focus-visible { box-shadow: 0 0 0 4px var(--bb-teal-100); border-radius: var(--radius-sm); }
+
+  /* ── Section headings ── */
+  .section-heading {
+    background: var(--bb-blue-100);
+    color: white;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+  }
+  .section-heading a { color: var(--bb-yellow-100); }
+  .section-body {
+    background: white;
+    border: 1px solid var(--bb-grey-00);
+    border-top: none;
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+
+  /* ── Logic rows ── */
+  .logic-row {
+    display: grid;
+    grid-template-columns: 80px 1fr 1fr 140px;
+    gap: 0;
+    border-bottom: 1px solid var(--bb-grey-00);
+    font-size: 0.8125rem;
+  }
+  .logic-row:last-child { border-bottom: none; }
+  .logic-row.header-row {
+    background: var(--bb-teal-00);
+    color: white;
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .logic-row > div {
+    padding: 0.625rem 0.75rem;
+    border-right: 1px solid var(--bb-grey-00);
+    vertical-align: top;
+  }
+  .logic-row > div:last-child { border-right: none; }
+  .logic-row:nth-child(even):not(.header-row) > div { background: var(--bb-blue-10); }
+
+  /* ── Questions table ── */
+  .q-table { width: 100%; border-collapse: collapse; font-size: 0.8125rem; }
+  .q-table th {
+    background: var(--bb-teal-00);
+    color: white;
+    text-align: left;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+  .q-table td { padding: 0.625rem 0.75rem; border-bottom: 1px solid var(--bb-grey-00); vertical-align: top; }
+  .q-table tr:last-child td { border-bottom: none; }
+  .q-table tr:nth-child(even) td { background: var(--bb-blue-10); }
+  .priority-badge {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 10px;
+    white-space: nowrap;
+  }
+  .priority-badge.blocker { background: var(--bb-red-10); color: var(--bb-red-00); }
+  .priority-badge.important { background: var(--bb-yellow-10); color: var(--bb-yellow-00); }
+  .priority-badge.nice { background: var(--bb-green-10); color: var(--bb-green-00); }
+  .status-open { color: var(--bb-red-00); font-weight: 700; }
+  .status-resolved { color: var(--bb-green-00); font-weight: 700; }
+
+  /* ── How to use ── */
+  .how-to {
+    background: white;
+    border: 1px solid var(--bb-grey-00);
+    border-radius: var(--radius-md);
+    padding: 1.25rem 1.375rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  .how-to h2 { font-size: 1.125rem; font-weight: 700; color: var(--bb-blue-100); margin-bottom: 0.75rem; }
+  .step { display: flex; gap: 0.875rem; margin-bottom: 0.875rem; align-items: flex-start; }
+  .step-num {
+    background: var(--bb-blue-100);
+    color: white;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .step p { font-size: 0.9375rem; line-height: 1.6; color: var(--bb-black-00); }
+  .step p strong { color: var(--bb-blue-100); }
+  code {
+    background: var(--bb-blue-10);
+    border: 1px solid var(--bb-grey-00);
+    border-radius: var(--radius-sm);
+    padding: 1px 6px;
+    font-family: monospace;
+    font-size: 0.8125rem;
+    color: var(--bb-teal-00);
+  }
+  .prompt-box {
+    background: var(--bb-blue-00, #00164a);
+    color: #a8d8ea;
+    border-radius: var(--radius-md);
+    padding: 0.875rem 1rem;
+    font-family: monospace;
+    font-size: 0.8125rem;
+    line-height: 1.7;
+    margin-top: 0.5rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+  }
+
+  /* ── No results ── */
+  .no-results {
+    text-align: center;
+    padding: 2.5rem 1.25rem;
+    color: var(--bb-mid-grey-00);
+    font-size: 1rem;
+    background: white;
+    border: 1px solid var(--bb-grey-00);
+    border-radius: var(--radius-md);
+  }
+
+  /* ── Page title band ── */
+  .page-title-band {
+    background: var(--bb-white-00);
+    border-bottom: 1px solid var(--bb-grey-00);
+    padding: 1.5rem 0;
+  }
+  .page-title-band h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--bb-black-00);
+    line-height: 1.2;
+    margin-bottom: 0.375rem;
+  }
+  .page-title-band p {
+    font-size: 1rem;
+    color: var(--bb-mid-grey-00);
+    line-height: 1.5;
+    border-left: 4px solid var(--bb-blue-40);
+    padding-left: 0.875rem;
+    margin-top: 0.5rem;
+  }
+
+  @media (max-width: 900px) {
+    .page-layout { grid-template-columns: 1fr; }
+    .sidebar { position: static; }
+    .stats-bar { grid-template-columns: repeat(2, 1fr); }
+    .logic-row { grid-template-columns: 60px 1fr 1fr; }
+    .logic-row > div:last-child { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── Top bar ── -->
+<div style="background-color:#00267f;color:white;font-size:0.875rem;padding:0.375rem 1rem;display:flex;align-items:center;gap:0.625rem;">
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="white" aria-hidden="true"><circle cx="8" cy="8" r="7" stroke="white" stroke-width="1.5" fill="none"/><rect x="7.25" y="7" width="1.5" height="5" rx="0.5"/><circle cx="8" cy="5.5" r="0.75"/></svg>
+  Official Government of Barbados website
+</div>
+
+<!-- ── Header ── -->
+<header style="background-color:#ffc726;border-bottom:4px solid #00267f;padding:1rem 0;">
+  <div class="container">
+    <a href="https://alpha.gov.bb" style="display:inline-block;color:#000000;text-decoration:none;">
+      <svg width="100%" viewBox="0 0 276 27" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="height:1.6875rem;width:17.25rem" role="img"><g><path d="M39.079 21.527C37.5026 21.527 36.103 21.1903 34.8802 20.5168C33.6721 19.8286 32.7219 18.8916 32.0294 17.7057C31.337 16.5051 30.9908 15.1288 30.9908 13.5769C30.9908 12.0249 31.337 10.6559 32.0294 9.47001C32.7219 8.26943 33.6721 7.3324 34.8802 6.65891C36.103 5.97077 37.5026 5.6267 39.079 5.6267C40.0219 5.6267 40.8911 5.7658 41.6867 6.04398C42.4823 6.32216 43.1821 6.71015 43.7861 7.20795C44.4049 7.69111 44.9205 8.24747 45.3331 8.87704L42.858 10.4144C42.6075 10.0191 42.276 9.66767 41.8635 9.3602C41.4657 9.05274 41.0237 8.81116 40.5376 8.63547C40.0514 8.45977 39.5652 8.37192 39.079 8.37192C38.1067 8.37192 37.2448 8.59886 36.4934 9.05274C35.7421 9.49197 35.1527 10.0996 34.7255 10.8756C34.2982 11.6515 34.0846 12.552 34.0846 13.5769C34.0846 14.5871 34.2909 15.4875 34.7034 16.2782C35.1307 17.0688 35.7273 17.691 36.4934 18.1449C37.2595 18.5841 38.1435 18.8038 39.1453 18.8038C39.8967 18.8038 40.567 18.6647 41.1563 18.3865C41.7456 18.0937 42.2171 17.691 42.5707 17.1786C42.9243 16.6661 43.1231 16.0659 43.1673 15.3777H39.5873V13.0278H46.0844V14.8946C46.055 16.3001 45.7382 17.5007 45.1342 18.4963C44.5301 19.4773 43.7051 20.2313 42.6591 20.7584C41.613 21.2708 40.4197 21.527 39.079 21.527Z"></path><path d="M12.5786 0C11.6253 2.46943 10.6536 5.03986 8.57466 7.00774C9.21998 6.80573 10.3493 6.62461 11.0753 6.64203V17.0283L7.988 17.4636C7.878 17.4532 7.84133 17.2895 7.84133 17.0666C7.54434 13.8413 6.74135 11.1316 5.81736 8.32779C5.75136 7.94466 4.58171 6.48181 5.4837 6.73955C5.5937 6.75348 6.80002 7.2202 6.60935 6.99729C4.96671 5.38119 2.56508 4.21788 0.233112 3.87306C0.0277812 3.8243 -0.0932171 3.92183 0.0901136 4.14822C3.18474 8.6726 5.77336 14.012 5.75136 20.3475C6.95401 20.3475 9.86897 19.6718 11.0753 19.6718V27H12.5969L12.9453 6.53406L12.5786 0Z"></path><path d="M12.5786 0C13.5319 2.46943 14.5036 5.03986 16.5825 7.00774C15.9372 6.80573 14.8079 6.62461 14.0819 6.64203V17.0283L17.1692 17.4636C17.2792 17.4532 17.3159 17.2895 17.3159 17.0666C17.6129 13.8413 18.4158 11.1316 19.3398 8.32779C19.4058 7.94466 20.5755 6.48181 19.6735 6.73955C19.5635 6.75348 18.3572 7.2202 18.5478 6.99729C20.1905 5.38119 22.5921 4.21788 24.9241 3.87306C25.1294 3.8243 25.2504 3.92183 25.0671 4.14822C21.9725 8.6726 19.3838 14.012 19.4058 20.3475C18.2032 20.3475 15.2882 19.6718 14.0819 19.6718V27H12.5603L12.2119 6.53406L12.5786 0Z"></path></g></svg>
+    </a>
+  </div>
+</header>
+
+<!-- ── Alpha banner ── -->
+<div style="background-color:#e5e9f2;border-bottom:1px solid #99a8cc;padding:0.625rem 0;">
+  <div class="container" style="font-size:0.9375rem;color:#000000;">
+    This page is in
+    <a href="https://alpha.gov.bb" style="color:#0e5f64;font-weight:700;text-decoration:underline;text-underline-offset:2px;">Alpha</a>.
+    This is an internal GovTech Barbados design tool — not a public-facing service.
+    <span style="margin-left:1.5rem;color:#595959;">Last updated: April 2026</span>
+  </div>
+</div>
+
+<!-- ── Page title ── -->
+<div class="page-title-band">
+  <div class="container">
+    <h1>Forms Pattern Library</h1>
+    <p>Reusable patterns, field definitions, and design standards for GovTech Barbados digital forms — spanning NISSS, CAIPO, and future MDAs. Use when analysing new forms, building specs, or logging decisions with MDAs.</p>
+  </div>
+</div>
+
+<!-- ── Main layout ── -->
+<div class="page-layout">
+
+  <!-- ── SIDEBAR ── -->
+  <aside class="sidebar">
+
+    <div class="search-wrap">
+      <label for="searchInput" style="display:block;font-size:0.75rem;font-weight:700;color:#595959;margin-bottom:0.375rem;text-transform:uppercase;letter-spacing:0.06em;">Search patterns</label>
+      <input type="text" id="searchInput" placeholder="e.g. address, declaration…" oninput="filterPatterns()" autocomplete="off">
+    </div>
+
+    <div class="sidebar-card">
+      <h3>Filter by MDA</h3>
+      <ul>
+        <li class="active" id="mda-all"><button onclick="setMda('all', this)">All MDAs <span class="count-badge">37</span></button></li>
+        <li id="mda-nisss"><button onclick="setMda('nisss', this)">NISSS <span class="count-badge">24</span></button></li>
+        <li id="mda-caipo"><button onclick="setMda('caipo', this)">CAIPO <span class="count-badge">17</span></button></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-card">
+      <h3>Filter by Status</h3>
+      <ul>
+        <li class="active" id="filter-all"><button onclick="setFilter('all', this)">All Patterns <span class="count-badge" id="cnt-all">37</span></button></li>
+        <li id="filter-standard"><button onclick="setFilter('standard', this)">&#x1F7E2; Standard <span class="count-badge" id="cnt-standard">9</span></button></li>
+        <li id="filter-emerging"><button onclick="setFilter('emerging', this)">&#x1F7E1; Emerging <span class="count-badge" id="cnt-emerging">10</span></button></li>
+        <li id="filter-new-p"><button onclick="setFilter('new-p', this)">&#x1F534; New <span class="count-badge" id="cnt-new">18</span></button></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-card">
+      <h3>Filter by Category</h3>
+      <ul>
+        <li id="cat-all"><button onclick="setCategory('all', this)">All Categories</button></li>
+        <li id="cat-applicant"><button onclick="setCategory('Applicant Details', this)">Applicant Details</button></li>
+        <li id="cat-employment"><button onclick="setCategory('Employment', this)">Employment</button></li>
+        <li id="cat-employer"><button onclick="setCategory('Employer', this)">Employer / SE</button></li>
+        <li id="cat-benefits"><button onclick="setCategory('Benefits', this)">Benefits</button></li>
+        <li id="cat-eligibility"><button onclick="setCategory('Eligibility', this)">Eligibility</button></li>
+        <li id="cat-thirdparty"><button onclick="setCategory('Third Party', this)">Third Party</button></li>
+        <li id="cat-payment"><button onclick="setCategory('Payment', this)">Payment</button></li>
+        <li id="cat-submission"><button onclick="setCategory('Submission', this)">Submission</button></li>
+        <li id="cat-confirmation"><button onclick="setCategory('Confirmation', this)">Confirmation</button></li>
+        <li id="cat-admin"><button onclick="setCategory('Admin', this)">Admin / Internal</button></li>
+        <li id="cat-company"><button onclick="setCategory('Company Registration', this)">Company Registration</button></li>
+        <li id="cat-legal"><button onclick="setCategory('Legal Filing', this)">Legal Filing</button></li>
+        <li id="cat-complaints"><button onclick="setCategory('Complaints', this)">Complaints</button></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-card">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="#conditional-logic">Conditional Logic Library</a></li>
+        <li><a href="#open-questions">Open MDA Questions</a></li>
+        <li><a href="#how-to-use">How to Use</a></li>
+        <li><a href="https://amogendukwe-png.github.io/forms-decision-log/" target="_blank">&#8599; Decision Log</a></li>
+      </ul>
+    </div>
+
+  </aside>
+
+  <!-- ── MAIN ── -->
+  <main>
+
+    <!-- Stats bar -->
+    <div class="stats-bar">
+      <div class="stat-card" onclick="setFilter('all', null)">
+        <div class="stat-num">37</div>
+        <div class="stat-label">Total Patterns</div>
+      </div>
+      <div class="stat-card standard" onclick="setFilter('standard', null)">
+        <div class="stat-num">9</div>
+        <div class="stat-label">&#x1F7E2; Standard</div>
+      </div>
+      <div class="stat-card emerging" onclick="setFilter('emerging', null)">
+        <div class="stat-num">10</div>
+        <div class="stat-label">&#x1F7E1; Emerging (2+ forms)</div>
+      </div>
+      <div class="stat-card new-p" onclick="setFilter('new-p', null)">
+        <div class="stat-num">18</div>
+        <div class="stat-label">&#x1F534; New (1 form)</div>
+      </div>
+    </div>
+
+    <!-- Pattern list -->
+    <div class="pattern-list" id="patternList">
+
+
+      <!-- ════════════════════════════════════ STANDARD ════ -->
+
+      <!-- P-01 -->
+      <div class="pattern-card standard" data-status="standard" data-category="Applicant Details" data-mda="nisss caipo" data-search="name block first name last name p-01 applicant">
+        <div class="card-header" onclick="toggleCard(this)">
+          <div class="card-left">
+            <div class="card-meta">
+              <span class="card-id">P-01</span>
+              <span class="status-badge standard">🟢 Standard</span>
+              <span class="category-tag">Applicant Details</span>
+              <span class="category-tag" style="background:#E8F4FD;color:#1565C0">NISSS · CAIPO</span>
+            </div>
+            <div class="card-title">Name Block</div>
+            <div class="card-summary">Collects an individual's full name. Appears on every NISSS form and CAIPO forms requiring individual identification.</div>
+          </div>
+          <div class="card-right">
+            <span class="occurrence-pill">13 forms · 2 MDAs</span>
+            <span class="expand-icon">▼</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <h4>Forms Using This Pattern</h4>
+          <div class="forms-list">
+            <span class="form-chip">All NISSS forms</span>
+          </div>
+          <h4>Field Definitions</h4>
+          <table class="field-table">
+            <thead><tr><th>Field</th><th>Component</th><th>Label / Help Text</th><th>Required</th><th>Validation</th></tr></thead>
+            <tbody>
+              <tr><td>First Name</td><td>Text Input</td><td>Label: "First Name"<br>Placeholder: e.g., John</td><td class="required-yes">Yes</td><td>Max 100 chars</td></tr>
+              <tr><td>Middle Name(s)</td><td>Text Input</td><td>Label: "Middle Name(s)"<br>Help: "Optional. Include all middle names."</td><td class="required-no">No</td><td>Max 200 chars</td></tr>
+              <tr><td>Last Name</td><td>Text Input</td><td>Label: "Last Name"<br>Placeholder: e.g., Smith</td><td class="required-yes">Yes</td><td>Max 100 chars</td></tr>
+            </tbody>
+          </table>
+          <h4>Design Notes</h4>
+          <div class="note-box">Paper forms often request "Last, First" ordering for sorting. Digital always uses First / Middle / Last. The output layer handles any re-ordering required by NIS systems.</div>
+          <h4>When to Promote</h4>
+          <div class="promote-box">Already standard. No further promotion needed.</div>
+          <a class="dl-link" href="https://amogendukwe-png.github.io/forms-decision-log/?search=P-01" target="_blank">↗ View decisions tagged P-01</a>
+        </div>
+      </div>
+
+      <!-- P-02 -->
+      <div class="pattern-card standard" data-status="standard" data-category="Applicant Details" data-mda="nisss" data-search="barbados address block street parish postal code district p-02">
+        <div class="card-header" onclick="toggleCard(this)">
+          <div class="card-left">
+            <div class="card-meta">
+              <span class="card-id">P-02</span>
+              <span class="status-badge standard">🟢 Standard</span>
+              <span class="category-tag">Applicant Details</span>
+            </div>
+            <div class="card-title">Barbados Address Block</div>
+            <div class="card-summary">Standard Barbadian address with District field (village/area). Confirmed across 9 forms.</div>
+          </div>
+          <div class="card-right">
+            <span class="occurrence-pill">9 / 11 forms</span>
+            <span class="expand-icon">▼</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <h4>Forms Using This Pattern</h4>
+          <div class="forms-list">
+            <span class="form-chip">Termination of Service</span><span class="form-chip">Claim for Unemployment</span><span class="form-chip">Direct Deposit</span><span class="form-chip">Educational Status</span><span class="form-chip">Employee Online</span><span class="form-chip">Life Certificate</span><span class="form-chip">Old Age Pension</span><span class="form-chip">Pensioner Declaration</span><span class="form-chip">Self-Employment Reg.</span>
+          </div>
+          <h4>Field Definitions</h4>
+          <table class="field-table">
+            <thead><tr><th>Field</th><th>Component</th><th>Label / Help Text</th><th>Required</th><th>Validation</th></tr></thead>
+            <tbody>
+              <tr><td>Street Address</td><td>Text Input</td><td>Label: "Street Address"<br>Placeholder: e.g., 12 Pine Street</td><td class="required-yes">Yes</td><td>Max 200 chars</td></tr>
+              <tr><td>District</td><td>Text Input</td><td>Label: "District"<br>Help: "Village or district name (e.g., Welches)"</td><td class="required-no">No</td><td>Max 100 chars</td></tr>
+              <tr><td>Parish</td><td>Dropdown</td><td>Label: "Parish"<br>Options: Christ Church, St. Andrew, St. George, St. James, St. John, St. Joseph, St. Lucy, St. Michael, St. Peter, St. Philip, St. Thomas</td><td class="required-yes">Yes</td><td>Must select one</td></tr>
+              <tr><td>Postal Code</td><td>Text Input</td><td>Label: "Postal Code"<br>Prefix: BB (pre-filled)<br>Placeholder: BB11000<br>Help: "Optional"</td><td class="required-no">No</td><td>Pattern: BB[0-9]{5}</td></tr>
+            </tbody>
+          </table>
+          <h4>Design Notes</h4>
+          <div class="note-box">District sits between Street Address and Parish — this is a Barbados-specific field not in the original template. It must always be included. The District field was promoted as standard after its 3rd confirmed occurrence (NIS Self-Employment Reg., Central Bank Pensioner Declaration, Direct Deposit).</div>
+          <a class="dl-link" href="https://amogendukwe-png.github.io/forms-decision-log/?search=P-02" target="_blank">↗ View decisions tagged P-02</a>
+        </div>
+      </div>
+
+      <!-- P-03 -->
+      <div class="pattern-card standard" data-status="standard" data-category="Applicant Details" data-mda="nisss" data-search="personal details dob date of birth national registration number nis number gender marital status p-03">
+        <div class="card-header" onclick="toggleCard(this)">
+          <div class="card-left">
+            <div class="card-meta">
+              <span class="card-id">P-03</span>
+              <span class="status-badge standard">🟢 Standard</span>
+              <span class="category-tag">Applicant Details</span>
+            </div>
+            <div class="card-title">Personal Details Block</div>
+            <div class="card-summary">DOB, NRN, NIS Number, Gender, Marital Status. Core identity fields for all citizen-facing forms.</div>
+          </div>
+          <div class="card-right">
+            <span class="occurrence-pill">9 / 11 forms</span>
+            <span class="expand-icon">▼</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <h4>Forms Using This Pattern</h4>
+          <div class="forms-list">
+            <span class="form-chip">All citizen-facing forms</span>
+          </div>
+          <h4>Field Definitions</h4>
+          <table class="field-table">
+            <thead><tr><th>Field</th><th>Component</th><th>Label / Help Text</th><th>Required</th><th>Validation</th></tr></thead>
+            <tbody>
+              <tr><td>Date of Birth</td><td>Date Picker</td><td>Label: "Date of Birth"<br>Format: MM/DD/YYYY</td><td class="required-yes">Yes</td><td>Cannot be future date. Age range varies by form.</td></tr>
+              <tr><td>National Registration No.</td><td>Text Input (ID)</td><td>Label: "National Registration Number"<br>Format: YYMMDD-XXXX<br>Help: "Find this on your National ID card"</td><td class="required-yes">Yes</td><td>Pattern: YYMMDD-XXXX</td></tr>
+              <tr><td>National Insurance No.</td><td>Text Input (ID)</td><td>Label: "National Insurance Number"<br>Help: "Find this on your NIS card or payslip"</td><td class="required-yes">Yes</td><td>Numeric, exact length 6 digits (⚠ confirm with NIS)</td></tr>
+              <tr><td>Gender</td><td>Radio Buttons</td><td>Label: "Gender"<br>Options: Male | Female | Other | Prefer not to say</td><td class="required-cond">Varies</td><td>Must select one</td></tr>
+              <tr><td>Marital Status</td><td>Radio Buttons</td><td>Label: "Marital Status"<br>Options: Single | Married | Divorced | Separated | Widowed | Other</td><td class="required-cond">Varies</td><td>Must select one. IF Married → show Maiden Name field.</td></tr>
+              <tr><td>TAMIS Number <em>(extension)</em></td><td>Text Input (ID)</td><td>Label: "TAMIS Number (BRA Tax ID)"<br>Help: "Find this on your BRA correspondence"</td><td class="required-no">Optional</td><td>Format TBC with BRA (see P-24)</td></tr>
+            </tbody>
+          </table>
+          <h4>Design Notes</h4>
+          <div class="note-box">NIS Self-Employment form extends Marital Status beyond the standard template (adds Divorced, Separated, Widowed). Use the extended list for all future forms. TAMIS Number is an emerging cross-MDA field — see P-24 and raise with the cross-MDA data standards team.</div>
+          <a class="dl-link" href="https://amogendukwe-png.github.io/forms-decision-log/?search=P-03" target="_blank">↗ View decisions tagged P-03</a>
+        </div>
+      </div>
+
+      <!-- P-04 -->
+      <div class="pattern-card standard" data-status="standard" data-category="Applicant Details" data-mda="nisss caipo" data-search="contact block telephone mobile email fax p-04">
+        <div class="card-header" onclick="toggleCard(this)">
+          <div class="card-left">
+            <div class="card-meta">
+              <span class="card-id">P-04</span>
+              <span class="status-badge standard">🟢 Standard</span>
+              <span class="category-tag">Applicant Details</span>
+              <span class="category-tag" style="background:#E8F4FD;color:#1565C0">NISSS · CAIPO</span>
+            </div>
+            <div class="card-title">Contact Block</div>
+            <div class="card-summary">Telephone, mobile, email. CAIPO variant adds Fax number. At least one of landline/mobile required.</div>
+          </div>
+          <div class="card-right">
+            <span class="occurrence-pill">9 / 11 forms</span>
+            <span class="expand-icon">▼</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <h4>Forms Using This Pattern</h4>
+          <div class="forms-list">
+            <span class="form-chip">All citizen-facing forms</span><span class="form-chip">Employer Online Reg.</span>
+          </div>
+          <h4>Field Definitions</h4>
+          <table class="field-table">
+            <thead><tr><th>Field</th><th>Component</th><th>Label / Help Text</th><th>Required</th><th>Validation</th></tr></thead>
+            <tbody>
+              <tr><td>Telephone Number</td><td>Tel Input</td><td>Label: "Telephone Number"<br>Format: XXX-XXXX</td><td class="required-cond">At least one of Tel/Mobile</td><td>Pattern: [0-9]{3}-[0-9]{4}</td></tr>
+              <tr><td>Mobile / Cell Number</td><td>Tel Input</td><td>Label: "Mobile Number"<br>Format: XXX-XXXX</td><td class="required-cond">At least one of Tel/Mobile</td><td>Pattern: [0-9]{3}-[0-9]{4}</td></tr>
+              <tr><td>Email Address</td><td>Email Input</td><td>Label: "Email Address"<br>Placeholder: yourname@example.com</td><td class="required-cond">Varies</td><td>Valid email; max 100 chars</td></tr>
+              <tr><td>Fax Number <em>(legacy)</em></td><td>Tel Input</td><td>Label: "Fax Number"<br>Help: "Optional. Include if available."</td><td class="required-no">No</td><td>Pattern: [0-9]{3}-[0-9]{4}</td></tr>
+            </tbody>
+          </table>
+          <h4>Design Notes</h4>
+          <div class="flag-box">⚠ Employee Online Registration: Email is the credential delivery channel. Add a "Confirm Email" field and display a prominent warning on Check Your Answers page. Fax is a legacy field — confirm with NIS whether it must be retained for employer-facing forms (see Q-24).</div>
+          <a class="dl-link" href="https://amogendukwe-png.github.io/forms-decision-log/?search=P-04" target="_blank">↗ View decisions tagged P-04</a>
+        </div>
+      </div>
+
+      <!-- P-05 -->
+      <div class="pattern-card standard" data-status="standard" data-category="Submission" data-mda="nisss caipo" data-search="declaration block submit signature legal warning p-05 caipo">
+        <div class="card-header" onclick="toggleCard(this)">
+          <div class="card-left">
+            <div class="card-meta">
+              <span class="card-id">P-05</span>
+              <span class="status-badge standard">🟢 Standard</span>
+              <span class="category-tag">Submission</span>
+            </div>
+            <div class="card-title">Declaration Block</div>
+            <div class="card-summary">Legal declaration, consent checkboxes, date, and submit. Appears on all forms. Penalty-carrying forms add a legal warning.</div>
+          </div>
+          <div class="card-right">
+            <span class="occurrence-pill">13 forms · 2 MDAs</span>
+            <span class="expand-icon">▼</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <h4>Forms Using This Pattern</h4>
+          <div class="forms-list"><span class="form-chip">All NISSS forms</span></div>
+          <h4>Field Definitions</h4>
+          <table class="field-table">
+            <thead><tr><th>Field</th><th>Component</th><th>Content / Label</th><th>Required</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td>Declaration Statement</td><td>Static Text</td><td>"I declare that the information given on this form is true to the best of my knowledge and belief."</td><td class="required-no">—</td><td>Standard text. Do not edit.</td></tr>
+              <tr><td>Legal Warning <em>(conditional)</em></td><td>Static Text (prominent)</td><td>"WARNING: Any person who makes a false statement is punishable by a fine or term of imprisonment or both."</td><td class="required-no">—</td><td>Show on all penalty-carrying forms. Display ABOVE submit button.</td></tr>
+              <tr><td>Consent Checkbox</td><td>Checkbox</td><td>Varies by form</td><td class="required-yes">Yes</td><td>All checkboxes required before submission.</td></tr>
+              <tr><td>Date Signed</td><td>Date (auto)</td><td>Label: "Date" — auto-fills today's date</td><td class="required-yes">Yes</td><td>Cannot be future date.</td></tr>
+              <tr><td>Digital Signature</td><td>Signature Pad</td><td>Label: "Signature" — with Clear button</td><td class="required-cond">Yes (employer/certifier forms)</td><td>Citizen self-service may use checkbox only.</td></tr>
+              <tr><td>Submit Button</td><td>Button (Primary)</td><td>"Submit Application" / "Submit Certificate" / "Pay and Submit"</td><td class="required-no">—</td><td>Label varies by form type.</td></tr>
+            </tbody>
+          </table>
+          <a class="dl-link" href="https://amogendukwe-png.github.io/forms-decision-log/?search=P-05" target="_blank">↗ View decisions tagged P-05</a>
+        </div>
+      </div>
+
+      <!-- ════════════════════════════════════ EMERGING ════ -->
+
+      <!-- P-06 -->
+      <div class="pattern-card emerging" data-status="emerging" data-category="Employer" data-mda="nisss" data-search="employer identity block registration number business name p-06">
+        <div class="card-header" onclick="toggleCard(this)">
+          <div class="card-left">
+            <div class="card-meta">
+              <span class="card-id">P-06</span>
+              <span class="status-badge emerging">🟡 Emerging</span>
+              <span class="category-tag">Employer</span>
+            </div>
+            <div class="card-title">Employer Identity Block</div>
+            <div class="card-summary">Employer name and NIS registration number. Confirmed on 2 forms — one more promotes it to Standard.</div>
+          </div>
+          <div class="card-right">
+            <span class="occurrence-pill">2 / 11 forms</span>
+            <span class="expand-icon">▼</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <h4>Forms Using This Pattern</h4>
+          <div class="forms-list">
+            <span class="form-chip">DP-10</span><span class="form-chip">Termination of Service</span>
+          </div>
+          <h4>Field Definitions</h4>
+          <table class="field-table">
+            <thead><tr><th>Field</th><th>Component</th><th>Label / Help Text</th><th>Required</th><th>Validation</th></tr></thead>
+            <tbody>
+              <tr><td>Employer / Business Name</td><td>Text Input</td><td>Label: "Name of Employer"<br>Help: "Registered business name"</td><td class="required-yes">Yes</td><td>Max 200 chars. Can pre-populate from employer login.</td></tr>
+              <tr><td>Employer NIS Reg. No.</td><td>Text Input (ID)</td><td>Label: "Employer NIS Registration Number"<br>Help: "Find this on your NIS employer registration certificate"</td><td class="required-yes">Yes</td><td>⚠ Format TBC with NIS (see Q-01). Can pre-populate from employer login.</td></tr>
+            </tbody>
+          </table>
+          <div class="flag-box">⚠ Employer Registration Number format is not yet confirmed — see Q-01. Raise as a blocker in the first MDA session. In a logged-in employer portal, both fields should pre-populate from the employer account.</div>
+          <div class="promote-box">Promote to Standard after 1 more confirmed occurrence.</div>
+          <a class="dl-link" href="https://amogendukwe-png.github.io/forms-decision-log/?search=P-06" target="_blank">↗ View decisions tagged P-06</a>
+        </div>
+      </div>
+
+      <!-- P-07 -->
+      <div class="pattern-card emerging" data-status="emerging" data-category="Employment" data-mda="nisss" data-search="employment history occupation position date commenced termination last paid p-07">
+        <div class="card-header" onclick="toggleCard(this)">
+          <div class="card-left">
+            <div class="card-meta">
+              <span class="card-id">P-07</span>
+              <span class="status-badge emerging">🟡 Emerging</span>
+              <span class="category-tag">Employment</span>
+            </div>
+            <div class="card-title">Employment History Block</div>
+            <div class="card-summary">Occupation, employment dates, termination and last paid dates with sequential validation.</div>
+          </div>
+          <div class="card-right">
+            <span class="occurrence-pill">2 / 11 forms</span>
+            <span class="expand-icon">▼</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <h4>Forms Using This Pattern</h4>
+          <div class="forms-list">
+            <span class="form-chip">Termination of Service</span><span class="form-chip">Claim for Unemployment</span>
+          </div>
+          <h4>Field Definitions</h4>
+          <table class="field-table">
+            <thead><tr><th>Field</th><th>Component</th><th>Label / Help Text</th><th>Required</th><th>Validation</th></tr></thead>
+            <tbody>
+              <tr><td>Occupation</td><td>Text Input</td><td>Label: "Occupation"<br>Help: "Job title or role held"</td><td class="required-yes">Yes</td><td>Max 200 chars</td></tr>
+              <tr><td>Position within Organisation</td><td>Text Input</td><td>Label: "Position within Organisation"<br>Help: "e.g., Supervisor, Junior Clerk"</td><td class="required-yes">Yes</td><td>Max 200 chars</td></tr>
+              <tr><td>Date Employment Commenced</td><td>Date Picker</td><td>Label: "Date Employment Commenced"<br>Format: YYYY-MM-DD</td><td class="required-yes">Yes</td><td>Cannot be future. Must be before Date of Termination.</td></tr>
+              <tr><td>Last Day at Work</td><td>Date Picker</td><td>Label: "Last Day at Work"<br>Format: YYYY-MM-DD</td><td class="required-yes">Yes</td><td>Cannot be future. Must be ≤ Date of Termination.</td></tr>
+              <tr><td>Date of Termination</td><td>Date Picker</td><td>Label: "Date of Termination"<br>Format: YYYY-MM-DD<br>Help: See contextual examples panel</td><td class="required-yes">Yes</td><td>Cannot be future. Must be ≥ Last Day at Work. If &gt;7 days past → show compliance warning.</td></tr>
+              <tr><td>Last Day for Which Employee Will Be Paid</td><td>Date Picker</td><td>Label: "Last Day for Which Employee Will Be Paid"<br>Format: YYYY-MM-DD</td><td class="required-yes">Yes</td><td>Must be ≥ Date of Termination.</td></tr>
+            </tbody>
+          </table>
+          <h4>Design Notes</h4>
+          <div class="note-box">Sequential date validation is mandatory: Commenced ≤ Last Day ≤ Termination ≤ Last Paid. The paper Termination form includes two worked Date of Termination examples (immediate dismissal vs. notice period). Preserve these as contextual help panels — do not remove because the form is digital. The Unemployment Claim pre-populates this block from a linked Termination Certificate (see L-24).</div>
+          <div class="promote-box">Promote to Standard after 1 more confirmed occurrence. Will appear on any NIS employment benefit or injury form.</div>
+          <a class="dl-link" href="https://amogendukwe-png.github.io/forms-decision-log/?search=P-07" target="_blank">↗ View decisions tagged P-07</a>
+        </div>
+      </div>
+
+      <!-- P-08 -->
+      <div class="pattern-card emerging" data-status="emerging" data-category="Payment" data-mda="nisss" data-search="banking details bank account direct deposit p-08">
+        <div class="card-header" onclick="toggleCard(this)">
+          <div class="card-left">
+            <div class="card-meta">
+              <span class="card-id">P-08</span>
+              <span class="status-badge emerging">🟡 Emerging</span>
+              <span class="category-tag">Payment</span>
+            </div>
+            <div class="card-title">Banking Details Block</div>
+            <div class="card-summary">Bank name, branch, account type, account number. Shown when claimant opts for direct deposit. 2 forms confirmed.</div>
+          </div>
+          <div class="card-right">
+            <span class="occurrence-pill">2 / 11 forms</span>
+            <span class="expand-icon">▼</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <h4>Forms Using This Pattern</h4>
+          <div class="forms-list">
+            <span class="form-chip">Direct Deposit</span><span class="form-chip">Old Age Pension (conditional)</span>
+          </div>
+          <h4>Field Definitions</h4>
+          <table class="field-table">
+            <thead><tr><th>Field</th><th>Component</th><th>Label / Help Text</th><th>Required</th><th>Validation</th></tr></thead>
+            <tbody>
+              <tr><td>Bank Name</td><td>Dropdown or Text</td><td>Label: "Bank Name"</td><td class="required-yes">Yes (if direct deposit)</td><td>Confirm list of Barbados banks with NIS (see Q-12). Dropdown preferred.</td></tr>
+              <tr><td>Branch</td><td>Text Input</td><td>Label: "Branch"</td><td class="required-yes">Yes</td><td>Max 100 chars</td></tr>
+              <tr><td>Account Type</td><td>Radio Buttons</td><td>Label: "Account Type"<br>Options: Current | Savings</td><td class="required-yes">Yes</td><td>Must select one</td></tr>
+              <tr><td>Account Number</td><td>Text Input (masked)</td><td>Label: "Account Number"</td><td class="required-yes">Yes</td><td>Numeric; mask after entry; length TBC with NIS</td></tr>
+              <tr><td>Bank Account Proof Upload</td><td>File Upload</td><td>Label: "Upload Bank Statement or Passbook"<br>Accepted: PDF, JPG, PNG<br>Max: 5MB</td><td class="required-yes">Yes</td><td>Required when banking block is completed</td></tr>
+            </tbody>
+          </table>
+          <div class="promote-box">Promote to Standard after 1 more confirmed occurrence.</div>
+          <a class="dl-link" href="https://amogendukwe-png.github.io/forms-decision-log/?search=P-08" target="_blank">↗ View decisions tagged P-08</a>
+        </div>
+      </div>
+
+      <!-- P-09 -->
+      <div class="pattern-card emerging" data-status="emerging" data-category="Applicant Details" data-mda="nisss" data-search="alternate payee nominee third party power of attorney p-09">
+        <div class="card-header" onclick="toggleCard(this)">
+          <div class="card-left">
+            <div class="card-meta">
+              <span class="card-id">P-09</span>
+              <span class="status-badge emerging">🟡 Emerging</span>
+              <span class="category-tag">Applicant Details</span>
+            </div>
+            <div class="card-title">Alternate Payee / Nominee Block</div>
+            <div class="card-summary">Full personal details clone for a nominated third party. Conditional on claimant electing an alternate payee.</div>
+          </div>
+          <div class="card-right">
+            <span class="occurrence-pill">2 / 11 forms</span>
+            <span class="expand-icon">▼</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <h4>Forms Using This Pattern</h4>
+          <div class="forms-list">
+            <span class="form-chip">Direct Deposit (conditional)</span><span class="form-chip">Old Age Pension (conditional)</span>
+          </div>
+          <h4>Description</h4>
+          <p style="font-size:14px;color:var(--text-light);margin:8px 0;">Mirrors the full Applicant Details page (P-01 + P-02 + P-03 + P-04) applied to a nominated third party, plus an Empowerment Type field (Power of Attorney, Guardian, etc.). Shown only when the claimant elects to nominate an alternate payee.</p>
+          <div class="flag-box">⚠ Confirm with NIS which empowerment documents are accepted (see Q-10). Upload of empowerment instrument is required when this block is completed.</div>
+          <div class="promote-box">Promote to Standard after 1 more confirmed occurrence.</div>
+          <a class="dl-link" href="https://amogendukwe-png.github.io/forms-decision-log/?search=P-09" target="_blank">↗ View decisions tagged P-09</a>
+        </div>
+      </div>
+
+      <!-- P-10 -->
+      <div class="pattern-card emerging" data-status="emerging" data-category="Employer" data-mda="nisss" data-search="contributions grid period dp10 self employed payroll p-10">
+        <div class="card-header" onclick="toggleCard(this)">
+          <div class="card-left">
+            <div class="card-meta">
+              <span class="card-id">P-10</span>
+              <span class="status-badge emerging">🟡 Emerging</span>
+              <span class="category-tag">Employer / SE</span>
+            </div>
+            <div class="card-title">Contributions Period / Grid Block</div>
+            <div class="card-summary">Looping grid of contribution periods with auto-calculated totals. Used on employer and self-employed contribution forms.</div>
+          </div>
+          <div class="card-right">
+            <span class="occurrence-pill">2 / 11 forms</span>
+            <span class="expand-icon">▼</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <h4>Forms Using This Pattern</h4>
+          <div class="forms-list">
+            <span class="form-chip">DP-10</span><span class="form-chip">Self-Employed Contributions</span>
+          </div>
+          <h4>Description</h4>
+          <p style="font-size:14px;color:var(--text-light);margin:8px 0;">DP-10: Earnings Type + No. of Employees + Insurable Earnings + Rate + Contributions Payable (auto-calc) + Discrepancy Adjustment + Total. Self-Employed: Year + Contributions Payable (looping rows).</p>
+          <div class="note-box">Ideally NIS pre-populates year(s) and contributions from internal records — the employer/self-employed person reviews and pays. All totals must be auto-calculated. EZ Pay integration required for DP-10. Submission deadline for DP-10: 15th of the following month (see Q-08).</div>
+          <div class="promote-box">Promote to Standard after 1 more confirmed occurrence.</div>
+          <a class="dl-link" href="https://amogendukwe-png.github.io/forms-decision-log/?search=P-10" target="_blank">↗ View decisions tagged P-10</a>
+        </div>
+      </div>
+
+      <!-- P-11 -->
+      <div class="pattern-card emerging" data-status="emerging" data-category="Employer" data-mda="nisss" data-search="business details self employment registration caipo p-11">
+        <div class="card-header" onclick="toggleCard(this)">
+          <div class="card-left">
+            <div class="card-meta">
+              <span class="card-id">P-11</span>
+              <span class="status-badge emerging">🟡 Emerging</span>
+              <span class="category-tag">Employer / SE</span>
+            </div>
+            <div class="card-title">Business Details Block</div>
+            <div class="card-summary">Business name, CAIPO registration number, nature of business, estimated monthly income. Drives NIS contribution calculation.</div>
+          </div>
+          <div class="card-right">
+            <span class="occurrence-pill">2 / 11 forms</span>
+            <span class="expand-icon">▼</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <h4>Forms Using This Pattern</h4>
+          <div class="forms-list">
+            <span class="form-chip">Self-Employment Reg.</span><span class="form-chip">Employer Online Reg.</span>
+          </div>
+          <h4>Field Definitions</h4>
+          <table class="field-table">
+            <thead><tr><th>Field</th><th>Component</th><th>Label / Help Text</th><th>Required</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td>Business / Trading Name</td><td>Text Input</td><td>Label: "Business or Trading Name"</td><td class="required-yes">Yes</td><td></td></tr>
+              <tr><td>CAIPO Registration No.</td><td>Text Input (ID)</td><td>Label: "Business Registration Number"<br>Help: "Your CAIPO registration number"</td><td class="required-cond">Varies</td><td>⚠ Format TBC with CAIPO — appears to be 6 alphanumeric chars (see Q-22)</td></tr>
+              <tr><td>Nature of Business</td><td>Text Input</td><td>Label: "Nature of Business / Occupation"</td><td class="required-yes">Yes</td><td></td></tr>
+              <tr><td>Estimated Monthly Income</td><td>Currency Input</td><td>Label: "Estimated Monthly Income (BBD)"<br>Help: "Used to calculate your NIS contributions"</td><td class="required-yes">Yes</td><td>Required with min/max validation. Drives contribution calculation (see Q-23).</td></tr>
+            </tbody>
+          </table>
+          <div class="promote-box">Promote to Standard after 1 more confirmed occurrence.</div>
+          <a class="dl-link" href="https://amogendukwe-png.github.io/forms-decision-log/?search=P-11" target="_blank">↗ View decisions tagged P-11</a>
+        </div>
+      </div>
+
+      <!-- P-12 -->
+      <div class="pattern-card emerging" data-status="emerging" data-category="Eligibility" data-mda="nisss" data-search="identification type gate passport national id card p-12">
+        <div class="card-header" onclick="toggleCard(this)">
+          <div class="card-left">
+            <div class="card-meta">
+              <span class="card-id">P-12</span>
+              <span class="status-badge emerging">🟡 Emerging</span>
+              <span class="category-tag">Eligibility</span>
+            </div>
+            <div class="card-title">Identification Type Gate</div>
+            <div class="card-summary">National ID Card vs Passport radio. Drives which ID fields are shown and whether Notarial Certificate upload is required.</div>
+          </div>
+          <div class="card-right">
+            <span class="occurrence-pill">2 / 11 forms</span>
+            <span class="expand-icon">▼</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <h4>Forms Using This Pattern</h4>
+          <div class="forms-list">
+            <span class="form-chip">Employee Online Reg.</span><span class="form-chip">Self-Employment Reg.</span>
+          </div>
+          <h4>Field Definitions</h4>
+          <table class="field-table">
+            <thead><tr><th>Field</th><th>Component</th><th>Options</th><th>Triggers</th></tr></thead>
+            <tbody>
+              <tr><td>ID Type</td><td>Radio Buttons</td><td>National ID Card | Passport</td><td>ID Card → show NRN (pre-linked from P-03)<br>Passport → show Passport Number + Country + Expiry</td></tr>
+              <tr><td>Passport Number</td><td>Text Input</td><td>—</td><td>Conditional (if Passport)</td></tr>
+              <tr><td>Country of Issue</td><td>Dropdown</td><td>Countries list</td><td>Conditional (if Passport)</td></tr>
+              <tr><td>Passport Expiry</td><td>Date Picker</td><td>—</td><td>Conditional (if Passport). Must be future date.</td></tr>
+              <tr><td>Notarial Certificate Upload</td><td>File Upload</td><td>PDF/JPG/PNG, max 5MB</td><td>Conditional (if overseas applicant)</td></tr>
+            </tbody>
+          </table>
+          <div class="promote-box">Promote to Standard after 1 more confirmed occurrence.</div>
+          <a class="dl-link" href="https://amogendukwe-png.github.io/forms-decision-log/?search=P-12" target="_blank">↗ View decisions tagged P-12</a>
+        </div>
+      </div>
+
+      <!-- P-13 -->
+      <div class="pattern-card emerging" data-status="emerging" data-category="Benefits" data-mda="nisss" data-search="pension entitlement employer pension start date p-13">
+        <div class="card-header" onclick="toggleCard(this)">
+          <div class="card-left">
+            <div class="card-meta">
+              <span class="card-id">P-13</span>
+              <span class="status-badge emerging">🟡 Emerging</span>
+              <span class="category-tag">Benefits</span>
+            </div>
+            <div class="card-title">Pension Entitlement Block</div>
+            <div class="card-summary">Is the employee/claimant entitled to an employer pension? If yes, captures pension start date.</div>
+          </div>
+          <div class="card-right">
+            <span class="occurrence-pill">2 / 11 forms</span>
+            <span class="expand-icon">▼</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <h4>Forms Using This Pattern</h4>
+          <div class="forms-list">
+            <span class="form-chip">Termination of Service</span><span class="form-chip">Old Age Pension (conditional)</span>
+          </div>
+          <h4>Field Definitions</h4>
+          <table class="field-table">
+            <thead><tr><th>Field</th><th>Component</th><th>Label</th><th>Required</th><th>Validation</th></tr></thead>
+            <tbody>
+              <tr><td>Pension entitlement?</td><td>Radio Buttons</td><td>"Is the employee receiving or entitled to a pension from the employer?"<br>Help: "This refers to an employer-provided pension, NOT NIS Old-Age Pension."<br>Options: Yes | No</td><td class="required-yes">Yes</td><td>—</td></tr>
+              <tr><td>Pension Start Date</td><td>Date Picker</td><td>Label: "Pension Start Date"<br>Format: YYYY-MM-DD</td><td class="required-cond">Conditional (if Yes)</td><td>Cannot be before Date of Termination</td></tr>
+            </tbody>
+          </table>
+          <div class="flag-box">⚠ Help text MUST distinguish employer pension from NIS pension — this is a frequent point of confusion.</div>
+          <div class="promote-box">Promote to Standard after 1 more confirmed occurrence.</div>
+          <a class="dl-link" href="https://amogendukwe-png.github.io/forms-decision-log/?search=P-13" target="_blank">↗ View decisions tagged P-13</a>
+        </div>
+      </div>
+
+      <!-- P-14 -->
+      <div class="pattern-card standard" data-status="standard" data-category="Admin" data-mda="nisss caipo" data-search="official use only admin internal officer view p-14">
+        <div class="card-header" onclick="toggleCard(this)">
+          <div class="card-left">
+            <div class="card-meta">
+              <span class="card-id">P-14</span>
+              <span class="status-badge standard">🟢 Standard</span>
+              <span class="category-tag">Admin / Internal</span>
+              <span class="category-tag" style="background:#E8F4FD;color:#1565C0">NISSS · CAIPO</span>
+            </div>
+            <div class="card-title">Official Use Block</div>
+            <div class="card-summary">Read-only NIS officer annotation fields. Never visible to applicants. Requires a separate admin/officer view.</div>
+          </div>
+          <div class="card-right">
+            <span class="occurrence-pill">2 / 11 forms</span>
+            <span class="expand-icon">▼</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <h4>Forms Using This Pattern</h4>
+          <div class="forms-list">
+            <span class="form-chip">Life Certificate</span><span class="form-chip">Old Age Pension</span>
+          </div>
+          <h4>Description</h4>
+          <p style="font-size:14px;color:var(--text-light);margin:8px 0;">Internal reference number, receiving officer name, date received, assessment notes. Gate behind officer authentication only.</p>
+          <div class="flag-box">⚠ Must NEVER be exposed to citizens. Requires a separate NIS officer UI spec. Confirm required fields with NIS for each form (see Q-04).</div>
+          <div class="promote-box">Promote to Standard after 1 more confirmed occurrence. Admin UI spec must be built separately from citizen spec.</div>
+          <a class="dl-link" href="https://amogendukwe-png.github.io/forms-decision-log/?search=P-14" target="_blank">↗ View decisions tagged P-14</a>
+        </div>
+      </div>
+
+      <!-- ════════════════════════════════════ NEW ════ -->
+
+      <!-- P-15 through P-24 abbreviated cards for space -->
+
+      <div class="pattern-card new-p" data-status="new-p" data-category="Employment" data-mda="nisss" data-search="layoff details date layoff re-employment holiday pay p-15">
+        <div class="card-header" onclick="toggleCard(this)">
+          <div class="card-left">
+            <div class="card-meta"><span class="card-id">P-15</span><span class="status-badge new-p">🔴 New</span><span class="category-tag">Employment</span></div>
+            <div class="card-title">Layoff Details Block</div>
+            <div class="card-summary">Date of layoff, expected re-employment date, holiday pay. Shown only when termination type = Layoff.</div>
+          </div>
+          <div class="card-right"><span class="occurrence-pill">1 / 11 forms</span><span class="expand-icon">▼</span></div>
+        </div>
+        <div class="card-body">
+          <h4>Forms Using This Pattern</h4>
+          <div class="forms-list"><span class="form-chip">Termination of Service (conditional)</span></div>
+          <h4>Field Definitions</h4>
+          <table class="field-table">
+            <thead><tr><th>Field</th><th>Component</th><th>Label</th><th>Required</th><th>Validation</th></tr></thead>
+            <tbody>
+              <tr><td>Date of Layoff</td><td>Date Picker</td><td>"Date of Layoff" — YYYY-MM-DD</td><td class="required-cond">Conditional</td><td>Cannot be future date</td></tr>
+              <tr><td>Expected Date of Re-employment</td><td>Date Picker</td><td>"Expected Date of Re-employment"<br>Help: "Leave blank if unknown."</td><td class="required-no">No</td><td>Must be after Date of Layoff if provided</td></tr>
+              <tr><td>Holiday pay given?</td><td>Radio</td><td>Options: Yes | No</td><td class="required-cond">Conditional</td><td>Triggers holiday pay fields if Yes</td></tr>
+              <tr><td>Holiday Pay Period From/To</td><td>Date Pickers</td><td>"Holiday Pay Period: From / To"</td><td class="required-cond">Conditional (if holiday pay Yes)</td><td>From must be before To</td></tr>
+              <tr><td>Amount of Holiday Pay</td><td>Currency Input</td><td>"Amount of Holiday Pay (BBD$)"</td><td class="required-cond">Conditional</td><td>BBD, 2 decimal places, positive</td></tr>
+            </tbody>
+          </table>
+          <div class="note-box">Likely to recur on NIS Unemployment Benefit and Sickness Benefit forms. Monitor for promotion.</div>
+          <a class="dl-link" href="https://amogendukwe-png.github.io/forms-decision-log/?search=P-15" target="_blank">↗ View decisions tagged P-15</a>
+        </div>
+      </div>
+
+      <div class="pattern-card new-p" data-status="new-p" data-category="Eligibility" data-mda="nisss" data-search="termination type gate voluntary layoff misconduct labour dispute p-16">
+        <div class="card-header" onclick="toggleCard(this)">
+          <div class="card-left"><div class="card-meta"><span class="card-id">P-16</span><span class="status-badge new-p">🔴 New</span><span class="category-tag">Eligibility</span></div><div class="card-title">Termination Type Gate</div><div class="card-summary">Two binary questions driving 5 downstream branches: voluntary, employer-initiated, layoff, misconduct, labour dispute.</div></div>
+          <div class="card-right"><span class="occurrence-pill">1 / 11 forms</span><span class="expand-icon">▼</span></div>
+        </div>
+        <div class="card-body">
+          <h4>Forms Using This Pattern</h4>
+          <div class="forms-list"><span class="form-chip">Termination of Service</span></div>
+          <div class="note-box">These two questions must come BEFORE Employment Details in the digital wizard — even though they appear in Section 4 of the paper form. Logical reordering is a confirmed design decision. 5 termination scenarios each reveal different sub-questions. Likely to recur on redundancy, severance, and employment injury forms.</div>
+          <a class="dl-link" href="https://amogendukwe-png.github.io/forms-decision-log/?search=P-16" target="_blank">↗ View decisions tagged P-16</a>
+        </div>
+      </div>
+
+      <div class="pattern-card new-p" data-status="new-p" data-category="Confirmation" data-mda="nisss" data-search="three copy distribution employee nis employer certificate p-17">
+        <div class="card-header" onclick="toggleCard(this)">
+          <div class="card-left"><div class="card-meta"><span class="card-id">P-17</span><span class="status-badge new-p">🔴 New</span><span class="category-tag">Confirmation</span></div><div class="card-title">Three-Copy Distribution Block</div><div class="card-summary">On confirmation, generates and distributes 3 copies: employee, NIS, employer. Legal 7-day deadline reminder shown.</div></div>
+          <div class="card-right"><span class="occurrence-pill">1 / 11 forms</span><span class="expand-icon">▼</span></div>
+        </div>
+        <div class="card-body">
+          <h4>Forms Using This Pattern</h4>
+          <div class="forms-list"><span class="form-chip">Termination of Service</span></div>
+          <div class="flag-box">⚠ Legal deadline: Employee and NIS must receive within 7 days of termination. Penalty: $1,000 + $200/day. If auto-transmission to NIS fails, show fallback download with clear instruction. Timestamp all transmissions for compliance. Likely to recur on any legally mandated multi-party certificate (e.g., employment injury, maternity).</div>
+          <a class="dl-link" href="https://amogendukwe-png.github.io/forms-decision-log/?search=P-17" target="_blank">↗ View decisions tagged P-17</a>
+        </div>
+      </div>
+
+      <div class="pattern-card new-p" data-status="new-p" data-category="Third Party" data-mda="nisss" data-search="institution verifier block educational status third party p-18">
+        <div class="card-header" onclick="toggleCard(this)">
+          <div class="card-left"><div class="card-meta"><span class="card-id">P-18</span><span class="status-badge new-p">🔴 New</span><span class="category-tag">Third Party</span></div><div class="card-title">Institution / Third-Party Verifier Block</div><div class="card-summary">Captures the identity of a verifying organisation (institution, employer, attorney) completing the form on behalf of the applicant.</div></div>
+          <div class="card-right"><span class="occurrence-pill">1 / 11 forms</span><span class="expand-icon">▼</span></div>
+        </div>
+        <div class="card-body">
+          <h4>Forms Using This Pattern</h4>
+          <div class="forms-list"><span class="form-chip">Educational Status Form</span></div>
+          <div class="note-box">Includes Institution Name, Address (P-02), Country, Standard of Education, Authorised Signatory Name + Title + Signature. Confirm with NIS whether digital signatures from institutions are accepted (see Q-14). Likely to recur on any form where a third party verifies applicant information.</div>
+          <a class="dl-link" href="https://amogendukwe-png.github.io/forms-decision-log/?search=P-18" target="_blank">↗ View decisions tagged P-18</a>
+        </div>
+      </div>
+
+      <div class="pattern-card new-p" data-status="new-p" data-category="Third Party" data-mda="nisss" data-search="witness certifier life certificate justice peace p-19">
+        <div class="card-header" onclick="toggleCard(this)">
+          <div class="card-left"><div class="card-meta"><span class="card-id">P-19</span><span class="status-badge new-p">🔴 New</span><span class="category-tag">Third Party</span></div><div class="card-title">Witness / Certifier Block</div><div class="card-summary">Certifier identity (name, address, type, relationship) with two-phase submission: claimant first, then witness. Life Certificate only.</div></div>
+          <div class="card-right"><span class="occurrence-pill">1 / 11 forms</span><span class="expand-icon">▼</span></div>
+        </div>
+        <div class="card-body">
+          <h4>Forms Using This Pattern</h4>
+          <div class="forms-list"><span class="form-chip">Life Certificate</span></div>
+          <div class="flag-box">⚠ Two-phase form: witness section cannot be submitted without a completed claimant section. Eligible witness types (Justice of the Peace, Notary Public, etc.) must match current NIS regulations — confirm with NIS (see Q-16). Whether digital witness certification is accepted is a design blocker (see Q-17).</div>
+          <a class="dl-link" href="https://amogendukwe-png.github.io/forms-decision-log/?search=P-19" target="_blank">↗ View decisions tagged P-19</a>
+        </div>
+      </div>
+
+      <div class="pattern-card new-p" data-status="new-p" data-category="Benefits" data-mda="nisss" data-search="proof of life periodic renewal life certificate benefit p-20">
+        <div class="card-header" onclick="toggleCard(this)">
+          <div class="card-left"><div class="card-meta"><span class="card-id">P-20</span><span class="status-badge new-p">🔴 New</span><span class="category-tag">Benefits</span></div><div class="card-title">Proof of Life / Periodic Renewal Block</div><div class="card-summary">Benefit type, last submission date, next required date. Renewal workflow — not a first-time application.</div></div>
+          <div class="card-right"><span class="occurrence-pill">1 / 11 forms</span><span class="expand-icon">▼</span></div>
+        </div>
+        <div class="card-body">
+          <h4>Forms Using This Pattern</h4>
+          <div class="forms-list"><span class="form-chip">Life Certificate</span></div>
+          <div class="note-box">Submission frequency TBC with NIS (see Q-15). Digital service should send deadline reminders in advance. Elderly and disabled claimants are the primary users — ensure AAA accessibility compliance on this form above all others.</div>
+          <a class="dl-link" href="https://amogendukwe-png.github.io/forms-decision-log/?search=P-20" target="_blank">↗ View decisions tagged P-20</a>
+        </div>
+      </div>
+
+      <div class="pattern-card new-p" data-status="new-p" data-category="Eligibility" data-mda="nisss" data-search="marital cohabitation status survivors benefit remarried p-21">
+        <div class="card-header" onclick="toggleCard(this)">
+          <div class="card-left"><div class="card-meta"><span class="card-id">P-21</span><span class="status-badge new-p">🔴 New</span><span class="category-tag">Eligibility</span></div><div class="card-title">Marital / Cohabitation Status Block</div><div class="card-summary">Has claimant remarried or entered cohabitation? Affects Survivors' Benefit entitlement. Survivors' Benefit recipients only.</div></div>
+          <div class="card-right"><span class="occurrence-pill">1 / 11 forms</span><span class="expand-icon">▼</span></div>
+        </div>
+        <div class="card-body">
+          <h4>Forms Using This Pattern</h4>
+          <div class="forms-list"><span class="form-chip">Life Certificate (Survivors' Benefit only)</span></div>
+          <div class="flag-box">⚠ Must be SKIPPED for Old Age Pension and Disablement Benefit recipients. A Yes response should flag the claim for NIS officer review — it may affect benefit eligibility. Never show this block to the wrong benefit type.</div>
+          <a class="dl-link" href="https://amogendukwe-png.github.io/forms-decision-log/?search=P-21" target="_blank">↗ View decisions tagged P-21</a>
+        </div>
+      </div>
+
+      <div class="pattern-card new-p" data-status="new-p" data-category="Employment" data-mda="nisss" data-search="overseas employment bilateral agreement old age pension p-22">
+        <div class="card-header" onclick="toggleCard(this)">
+          <div class="card-left"><div class="card-meta"><span class="card-id">P-22</span><span class="status-badge new-p">🔴 New</span><span class="category-tag">Employment</span></div><div class="card-title">Overseas Employment Block</div><div class="card-summary">Looping block: country, employer, period. Captures overseas contribution history for pension calculation. Old Age Pension only.</div></div>
+          <div class="card-right"><span class="occurrence-pill">1 / 11 forms</span><span class="expand-icon">▼</span></div>
+        </div>
+        <div class="card-body">
+          <h4>Forms Using This Pattern</h4>
+          <div class="forms-list"><span class="form-chip">Old Age Pension (conditional)</span></div>
+          <div class="note-box">Confirm which countries have bilateral agreements with Barbados (see Q-19). Looping: "Add another country" up to a reasonable max. Minimum 1 row if overseas employment is declared.</div>
+          <a class="dl-link" href="https://amogendukwe-png.github.io/forms-decision-log/?search=P-22" target="_blank">↗ View decisions tagged P-22</a>
+        </div>
+      </div>
+
+      <div class="pattern-card new-p" data-status="new-p" data-category="Employer" data-mda="nisss" data-search="earnings grid employer payroll dp10 contributions p-23">
+        <div class="card-header" onclick="toggleCard(this)">
+          <div class="card-left"><div class="card-meta"><span class="card-id">P-23</span><span class="status-badge new-p">🔴 New</span><span class="category-tag">Employer / SE</span></div><div class="card-title">Earnings Grid Block</div><div class="card-summary">Employer payroll contributions table with auto-calculated totals and discrepancy adjustments. DP-10 only.</div></div>
+          <div class="card-right"><span class="occurrence-pill">1 / 11 forms</span><span class="expand-icon">▼</span></div>
+        </div>
+        <div class="card-body">
+          <h4>Forms Using This Pattern</h4>
+          <div class="forms-list"><span class="form-chip">DP-10</span></div>
+          <div class="note-box">Columns: Earnings Type (Weekly/Bi-Weekly/Monthly), No. of Employees, Total Insurable Earnings, Contribution Rate (pre-set by NIS), Contributions Payable (auto-calc). Plus Discrepancy Adjustment and Total Amount Payable. All totals must be auto-calculated — no manual override. Payroll import (CSV/Excel) recommended (see Q-09).</div>
+          <a class="dl-link" href="https://amogendukwe-png.github.io/forms-decision-log/?search=P-23" target="_blank">↗ View decisions tagged P-23</a>
+        </div>
+      </div>
+
+      <div class="pattern-card new-p" data-status="new-p" data-category="Applicant Details" data-mda="nisss" data-search="tamis number bra tax barbados revenue authority cross mda p-24">
+        <div class="card-header" onclick="toggleCard(this)">
+          <div class="card-left"><div class="card-meta"><span class="card-id">P-24</span><span class="status-badge new-p">🔴 New</span><span class="category-tag">Applicant Details</span></div><div class="card-title">TAMIS Number Field</div><div class="card-summary">Barbados Revenue Authority tax ID appearing on an NIS form. Emerging cross-MDA identity field — needs BRA + NIS agreement before standardisation.</div></div>
+          <div class="card-right"><span class="occurrence-pill">1 / 11 forms</span><span class="expand-icon">▼</span></div>
+        </div>
+        <div class="card-body">
+          <h4>Forms Using This Pattern</h4>
+          <div class="forms-list"><span class="form-chip">Direct Deposit (conditional)</span></div>
+          <div class="flag-box">⚠ Cross-MDA field — needs BRA + NIS governance agreement before it can be standardised. Format TBC with BRA (see Q-11). Do not add to the standard Personal Details Block until the governance question is resolved. Escalate to the cross-MDA data standards team.</div>
+          <a class="dl-link" href="https://amogendukwe-png.github.io/forms-decision-log/?search=P-24" target="_blank">↗ View decisions tagged P-24</a>
+        </div>
+      </div>
+
+
+      <!-- ════════════════════════════════════ CAIPO PATTERNS ════ -->
+
+      <!-- P-25 -->
+      <div class="pattern-card standard" data-status="standard" data-category="Company Registration" data-mda="caipo" data-search="company entity identity name number registration p-25 caipo">
+        <div class="card-header" onclick="toggleCard(this)">
+          <div class="card-left">
+            <div class="card-meta">
+              <span class="card-id">P-25</span>
+              <span class="status-badge standard">🟢 Standard</span>
+              <span class="category-tag">Company Registration</span>
+              <span class="category-tag" style="background:#E8F4FD;color:#1565C0">CAIPO</span>
+            </div>
+            <div class="card-title">Company / Entity Identity Block</div>
+            <div class="card-summary">Company name and CAIPO-assigned company number. Appears on every CAIPO filing and declaration form.</div>
+          </div>
+          <div class="card-right">
+            <span class="occurrence-pill">9 / 9 CAIPO forms</span>
+            <span class="expand-icon">▼</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <h4>Forms Using This Pattern</h4>
+          <div class="forms-list">
+            <span class="form-chip">Company Declaration</span><span class="form-chip">Declaration (Non-Profit)</span><span class="form-chip">Declaration (Domestic)</span><span class="form-chip">Declaration (International)</span><span class="form-chip">Articles of Reincorporation</span><span class="form-chip">Notice of Cancellation</span><span class="form-chip">Financial Declaration</span><span class="form-chip">URL Declaration</span><span class="form-chip">IBC Application</span>
+          </div>
+          <h4>Field Definitions</h4>
+          <table class="field-table">
+            <thead><tr><th>Field</th><th>Component</th><th>Label / Help Text</th><th>Required</th><th>Validation</th></tr></thead>
+            <tbody>
+              <tr><td>Company Name</td><td>Text Input</td><td>Label: "Company Name"<br>Help: "Enter the full registered name as it appears on incorporation documents."</td><td class="required-yes">Yes</td><td>Max 300 chars. Cannot be empty.</td></tr>
+              <tr><td>Company Number</td><td>Text Input (ID)</td><td>Label: "Company Number"<br>Help: "CAIPO-assigned number. Find this on your Certificate of Incorporation."</td><td class="required-yes">Yes</td><td>Format TBC with CAIPO (see Q-28)</td></tr>
+            </tbody>
+          </table>
+          <h4>Design Notes</h4>
+          <div class="note-box">Company Number is CAIPO-assigned at incorporation and appears on all subsequent filings. Unlike NISSS where NIS Number drives identity, CAIPO uses the Company Number as the primary entity identifier. These two fields always appear together — never split them across pages.</div>
+          <div class="flag-box">⚠ Confirm exact Company Number format/validation with CAIPO (see Q-28). Until confirmed, display as free-text input with no pattern enforcement.</div>
+          <a class="dl-link" href="https://amogendukwe-png.github.io/forms-decision-log/?search=P-25" target="_blank">↗ View decisions tagged P-25</a>
+        </div>
+      </div>
+
+      <!-- P-26 -->
+      <div class="pattern-card standard" data-status="standard" data-category="Legal Filing" data-mda="caipo" data-search="legal statutory declaration attorney justice of peace notary sworn p-26 caipo">
+        <div class="card-header" onclick="toggleCard(this)">
+          <div class="card-left">
+            <div class="card-meta">
+              <span class="card-id">P-26</span>
+              <span class="status-badge standard">🟢 Standard</span>
+              <span class="category-tag">Legal Filing</span>
+              <span class="category-tag" style="background:#E8F4FD;color:#1565C0">CAIPO</span>
+            </div>
+            <div class="card-title">Legal / Statutory Declaration Block</div>
+            <div class="card-summary">Formal attorney or director declaration citing specific legislation, signed before a Justice of the Peace or Notary. Distinct from P-05 (citizen self-declaration).</div>
+          </div>
+          <div class="card-right">
+            <span class="occurrence-pill">7 CAIPO forms</span>
+            <span class="expand-icon">▼</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <h4>Forms Using This Pattern</h4>
+          <div class="forms-list">
+            <span class="form-chip">Company Declaration (domestic)</span><span class="form-chip">Declaration (Non-Profit)</span><span class="form-chip">Declaration (International)</span><span class="form-chip">URL Declaration</span><span class="form-chip">Financial Declaration</span><span class="form-chip">IBC Application (declaration section)</span>
+          </div>
+          <h4>Field Definitions</h4>
+          <table class="field-table">
+            <thead><tr><th>Field</th><th>Component</th><th>Label / Help Text</th><th>Required</th><th>Validation</th></tr></thead>
+            <tbody>
+              <tr><td>Declarant Name</td><td>Text Input</td><td>Label: "Declarant Name (Full Name)"</td><td class="required-yes">Yes</td><td>Max 200 chars</td></tr>
+              <tr><td>Declarant Address</td><td>Address Block</td><td>See P-02 variant. May include country for overseas declarants.</td><td class="required-yes">Yes</td><td>—</td></tr>
+              <tr><td>Professional Role</td><td>Dropdown</td><td>Label: "Role"<br>Options: Attorney-at-Law | Director | Authorised Officer | Other</td><td class="required-yes">Yes</td><td>Must select one</td></tr>
+              <tr><td>Declaration Statements</td><td>Read-only numbered list</td><td>Statutory text displayed for review. Pre-filled based on form type.</td><td class="required-yes">Acknowledge</td><td>Checkbox: "I confirm the above declaration"</td></tr>
+              <tr><td>Signature of Declarant</td><td>Signature component</td><td>Label: "Signature of Declarant"</td><td class="required-yes">Yes</td><td>Digital signature — confirm acceptance with CAIPO (see Q-27)</td></tr>
+              <tr><td>Date of Declaration</td><td>Date Picker</td><td>Label: "Date Declared" — auto-populates today</td><td class="required-yes">Yes</td><td>Cannot be future date</td></tr>
+              <tr><td>Witness Name (JP / Notary)</td><td>Text Input</td><td>Label: "Witness Name"<br>Help: "Full name of the Justice of the Peace or Notary Public"</td><td class="required-yes">Yes</td><td>Max 200 chars</td></tr>
+            </tbody>
+          </table>
+          <h4>Design Notes</h4>
+          <div class="note-box">P-26 is legally distinct from P-05. P-05 captures a citizen's personal "I declare this is accurate" consent at form submission. P-26 is a formal statutory instrument — an attorney or director making representations before a witnessing official under a specific Act. These must never be merged.</div>
+          <div class="flag-box">⚠ Design Blocker — can CAIPO accept digital signatures on statutory declarations, or must originals be submitted? (Q-27). Until resolved, build as downloadable/printable form with digital-fill capability rather than fully online submission.</div>
+          <a class="dl-link" href="https://amogendukwe-png.github.io/forms-decision-log/?search=P-26" target="_blank">↗ View decisions tagged P-26</a>
+        </div>
+      </div>
+
+      <!-- P-27 -->
+      <div class="pattern-card standard" data-status="standard" data-category="Company Registration" data-mda="caipo" data-search="registered incorporation details office address registration number p-27 caipo">
+        <div class="card-header" onclick="toggleCard(this)">
+          <div class="card-left">
+            <div class="card-meta">
+              <span class="card-id">P-27</span>
+              <span class="status-badge standard">🟢 Standard</span>
+              <span class="category-tag">Company Registration</span>
+              <span class="category-tag" style="background:#E8F4FD;color:#1565C0">CAIPO</span>
+            </div>
+            <div class="card-title">Registered / Incorporation Details Block</div>
+            <div class="card-summary">Registration/incorporation number, date, registered office, and principal office address. Extended company identity block used on licencing and structural filing forms.</div>
+          </div>
+          <div class="card-right">
+            <span class="occurrence-pill">4 CAIPO forms</span>
+            <span class="expand-icon">▼</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <h4>Forms Using This Pattern</h4>
+          <div class="forms-list">
+            <span class="form-chip">IBC Application</span><span class="form-chip">Articles of Reincorporation</span><span class="form-chip">Notice of Cancellation</span><span class="form-chip">Registered Agents Application</span>
+          </div>
+          <h4>Field Definitions</h4>
+          <table class="field-table">
+            <thead><tr><th>Field</th><th>Component</th><th>Label / Help Text</th><th>Required</th><th>Validation</th></tr></thead>
+            <tbody>
+              <tr><td>Registration / Incorporation Number</td><td>Text Input (ID)</td><td>Label: "Registration / Incorporation Number"</td><td class="required-yes">Yes</td><td>See Q-28 for format</td></tr>
+              <tr><td>Date of Incorporation</td><td>Date Picker</td><td>Label: "Date of Incorporation / Registration"</td><td class="required-yes">Yes</td><td>Cannot be future date</td></tr>
+              <tr><td>Registered Office Address</td><td>Address Block</td><td>Label: "Registered Office Address"<br>Uses P-02 variant (Barbados address)</td><td class="required-yes">Yes</td><td>—</td></tr>
+              <tr><td>Principal Office Address (if different)</td><td>Address Block (conditional)</td><td>Checkbox: "Principal office is the same as registered office"<br>IF unchecked → show address block</td><td class="required-cond">Conditional</td><td>—</td></tr>
+              <tr><td>Country of Incorporation</td><td>Dropdown</td><td>Label: "Country of Incorporation"<br>Default: Barbados</td><td class="required-cond">Conditional (external companies)</td><td>ISO country list</td></tr>
+            </tbody>
+          </table>
+          <div class="note-box">The "same address" checkbox pattern reduces friction for the majority of cases where registered and principal offices are the same. Only show the second address block when the checkbox is unchecked.</div>
+          <a class="dl-link" href="https://amogendukwe-png.github.io/forms-decision-log/?search=P-27" target="_blank">↗ View decisions tagged P-27</a>
+        </div>
+      </div>
+
+      <!-- P-28 -->
+      <div class="pattern-card emerging" data-status="emerging" data-category="Company Registration" data-mda="caipo" data-search="name preference list proposed name search reservation society p-28 caipo">
+        <div class="card-header" onclick="toggleCard(this)">
+          <div class="card-left">
+            <div class="card-meta">
+              <span class="card-id">P-28</span>
+              <span class="status-badge emerging">🟡 Emerging</span>
+              <span class="category-tag">Company Registration</span>
+              <span class="category-tag" style="background:#E8F4FD;color:#1565C0">CAIPO</span>
+            </div>
+            <div class="card-title">Name Preference List</div>
+            <div class="card-summary">Ordered list of up to 3 proposed names for a company, society, or business name reservation, with derivation/purpose context.</div>
+          </div>
+          <div class="card-right">
+            <span class="occurrence-pill">2 CAIPO forms</span>
+            <span class="expand-icon">▼</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <h4>Forms Using This Pattern</h4>
+          <div class="forms-list">
+            <span class="form-chip">Reserve a Company Name (Form 33)</span><span class="form-chip">Request Society Name (Form 15)</span>
+          </div>
+          <h4>Field Definitions</h4>
+          <table class="field-table">
+            <thead><tr><th>Field</th><th>Component</th><th>Label / Help Text</th><th>Required</th><th>Validation</th></tr></thead>
+            <tbody>
+              <tr><td>Proposed Name 1 (most preferred)</td><td>Text Input</td><td>Label: "First Choice Name"<br>Help: "Your most preferred name. CAIPO will try this first."</td><td class="required-yes">Yes</td><td>Max 300 chars. Cannot match a reserved or registered name.</td></tr>
+              <tr><td>Proposed Name 2</td><td>Text Input</td><td>Label: "Second Choice Name (optional)"</td><td class="required-no">No</td><td>Max 300 chars</td></tr>
+              <tr><td>Proposed Name 3</td><td>Text Input</td><td>Label: "Third Choice Name (optional)"</td><td class="required-no">No</td><td>Max 300 chars</td></tr>
+              <tr><td>Name Derivation / Purpose</td><td>Text Area</td><td>Label: "Why this name? Where does it come from?"<br>Help: "E.g., founders' names, a word combination, or a brand name."</td><td class="required-no">No</td><td>Max 500 chars</td></tr>
+              <tr><td>Purpose of Name</td><td>Radio</td><td>Label: "This name is for:"<br>Options: New company | Change of name | Amalgamation</td><td class="required-yes">Yes</td><td>Must select one. IF Change of name → show current name field.</td></tr>
+            </tbody>
+          </table>
+          <div class="note-box">Set user expectations clearly: "CAIPO will search for your first choice. If unavailable, they will try the next." Show the reservation validity period once confirmed with CAIPO (see Q-29). Promote to Standard when a third CAIPO form uses this pattern.</div>
+          <a class="dl-link" href="https://amogendukwe-png.github.io/forms-decision-log/?search=P-28" target="_blank">↗ View decisions tagged P-28</a>
+        </div>
+      </div>
+
+      <!-- P-29 -->
+      <div class="pattern-card emerging" data-status="emerging" data-category="Legal Filing" data-mda="caipo" data-search="agent representative authorisation power of attorney matter proceeding p-29 caipo">
+        <div class="card-header" onclick="toggleCard(this)">
+          <div class="card-left">
+            <div class="card-meta">
+              <span class="card-id">P-29</span>
+              <span class="status-badge emerging">🟡 Emerging</span>
+              <span class="category-tag">Legal Filing</span>
+              <span class="category-tag" style="background:#E8F4FD;color:#1565C0">CAIPO</span>
+            </div>
+            <div class="card-title">Agent / Representative Authorisation Block</div>
+            <div class="card-summary">Appoints a named agent to act on the appointing party's behalf for a specific matter or proceeding. Includes automatic revocation of prior authorisations.</div>
+          </div>
+          <div class="card-right">
+            <span class="occurrence-pill">2 CAIPO forms</span>
+            <span class="expand-icon">▼</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <h4>Forms Using This Pattern</h4>
+          <div class="forms-list">
+            <span class="form-chip">Form of Authorisation (Geographical Indications Act)</span><span class="form-chip">IBC Application (service provider)</span>
+          </div>
+          <h4>Field Definitions</h4>
+          <table class="field-table">
+            <thead><tr><th>Field</th><th>Component</th><th>Label / Help Text</th><th>Required</th><th>Validation</th></tr></thead>
+            <tbody>
+              <tr><td>Appointing Party Name(s)</td><td>Text Input</td><td>Label: "Full name(s) of person(s) or firm appointing the agent"<br>Help: "For a firm, include all partners and the country of incorporation."</td><td class="required-yes">Yes</td><td>Max 400 chars</td></tr>
+              <tr><td>Agent Name</td><td>Text Input</td><td>Label: "Agent's Full Name"</td><td class="required-yes">Yes</td><td>Max 200 chars</td></tr>
+              <tr><td>Agent Address</td><td>Address Block</td><td>Label: "Agent's Trade or Business Address"</td><td class="required-yes">Yes</td><td>—</td></tr>
+              <tr><td>Matter / Proceeding Reference</td><td>Text Input</td><td>Label: "Matter or Proceeding Reference Number (if known)"</td><td class="required-no">No</td><td>Max 100 chars</td></tr>
+              <tr><td>Appointing Party Nationality</td><td>Dropdown</td><td>Label: "Nationality of Appointing Party"</td><td class="required-yes">Yes</td><td>ISO country list</td></tr>
+              <tr><td>Prior Authorisations</td><td>Checkbox</td><td>Pre-checked: "This authorisation revokes all previous authorisations in respect of the same matter."</td><td class="required-yes">Yes</td><td>Required read acknowledgement</td></tr>
+            </tbody>
+          </table>
+          <div class="note-box">The revocation clause is standard legal text — should be displayed as read-only with explicit acknowledgement rather than an editable field. Promote to Standard when a third CAIPO form uses this pattern (see also: Q-30 on digital acceptance).</div>
+          <a class="dl-link" href="https://amogendukwe-png.github.io/forms-decision-log/?search=P-29" target="_blank">↗ View decisions tagged P-29</a>
+        </div>
+      </div>
+
+      <!-- P-30 -->
+      <div class="pattern-card new-p" data-status="new-p" data-category="Eligibility" data-mda="caipo" data-search="fit proper background check criminal conviction bankruptcy regulatory sanctions p-30 caipo">
+        <div class="card-header" onclick="toggleCard(this)">
+          <div class="card-left"><div class="card-meta"><span class="card-id">P-30</span><span class="status-badge new-p">🔴 New</span><span class="category-tag">Eligibility</span><span class="category-tag" style="background:#E8F4FD;color:#1565C0">CAIPO</span></div><div class="card-title">Fit and Proper / Background Check Declaration</div><div class="card-summary">Series of Yes/No questions about criminal history, bankruptcy, and regulatory sanctions for company officers, directors, and shareholders.</div></div>
+          <div class="card-right"><span class="occurrence-pill">1 CAIPO form</span><span class="expand-icon">▼</span></div>
+        </div>
+        <div class="card-body">
+          <h4>Forms Using This Pattern</h4>
+          <div class="forms-list"><span class="form-chip">IBC Application (Q23–27)</span></div>
+          <div class="note-box">Five Yes/No questions: (1) criminal conviction involving fraud/dishonesty, (2) bankruptcy or creditor compromise, (3) refused/withdrawn licence, (4) disciplinary measures by regulatory body, (5) regulatory investigation. Any Yes answer must reveal a detail textarea. All five questions must be answered — partial completion should block submission.</div>
+          <div class="flag-box">⚠ Confirm with CAIPO whether digital responses are accepted or whether this section requires a sworn affidavit (see Q-32). This may be a design blocker for fully online IBC submissions.</div>
+          <a class="dl-link" href="https://amogendukwe-png.github.io/forms-decision-log/?search=P-30" target="_blank">↗ View decisions tagged P-30</a>
+        </div>
+      </div>
+
+      <!-- P-31 -->
+      <div class="pattern-card new-p" data-status="new-p" data-category="Company Registration" data-mda="caipo" data-search="shareholder beneficial owner block shareholding percentage ownership p-31 caipo">
+        <div class="card-header" onclick="toggleCard(this)">
+          <div class="card-left"><div class="card-meta"><span class="card-id">P-31</span><span class="status-badge new-p">🔴 New</span><span class="category-tag">Company Registration</span><span class="category-tag" style="background:#E8F4FD;color:#1565C0">CAIPO</span></div><div class="card-title">Shareholder / Beneficial Owner Block</div><div class="card-summary">Looping block capturing each shareholder's name, contact details, and shareholding percentage, plus ultimate beneficial owner if different.</div></div>
+          <div class="card-right"><span class="occurrence-pill">1 CAIPO form</span><span class="expand-icon">▼</span></div>
+        </div>
+        <div class="card-body">
+          <h4>Forms Using This Pattern</h4>
+          <div class="forms-list"><span class="form-chip">IBC Application</span></div>
+          <div class="note-box">Looping row structure: Full Name (incl. middle for individuals), Residential Address, Telephone, Fax, Shareholding %. Totals must sum to 100% — show running total and validation error if not. Ultimate Beneficial Owner sub-section shown if any shareholder is itself a company ("if different from above"). Likely to recur on any company formation or governance form.</div>
+          <a class="dl-link" href="https://amogendukwe-png.github.io/forms-decision-log/?search=P-31" target="_blank">↗ View decisions tagged P-31</a>
+        </div>
+      </div>
+
+      <!-- P-32 -->
+      <div class="pattern-card new-p" data-status="new-p" data-category="Company Registration" data-mda="caipo" data-search="director officer profile qualifications experience corporate status p-32 caipo">
+        <div class="card-header" onclick="toggleCard(this)">
+          <div class="card-left"><div class="card-meta"><span class="card-id">P-32</span><span class="status-badge new-p">🔴 New</span><span class="category-tag">Company Registration</span><span class="category-tag" style="background:#E8F4FD;color:#1565C0">CAIPO</span></div><div class="card-title">Director / Officer Profile Block</div><div class="card-summary">Professional profile for each proposed director or senior manager: academic qualifications, professional experience, and corporate status. Looping for multiple directors.</div></div>
+          <div class="card-right"><span class="occurrence-pill">1 CAIPO form</span><span class="expand-icon">▼</span></div>
+        </div>
+        <div class="card-body">
+          <h4>Forms Using This Pattern</h4>
+          <div class="forms-list"><span class="form-chip">IBC Application</span></div>
+          <div class="note-box">Fields per director: Name, Role/Title, Academic Qualifications (textarea), Professional Experience (textarea), Corporate Status / Business Description (textarea). Looping: "Add another director" button. Consider file upload for CV/résumé as alternative to free-text fields. Likely to recur on any governance or licensing form requiring director fitness assessment.</div>
+          <a class="dl-link" href="https://amogendukwe-png.github.io/forms-decision-log/?search=P-32" target="_blank">↗ View decisions tagged P-32</a>
+        </div>
+      </div>
+
+      <!-- P-33 -->
+      <div class="pattern-card new-p" data-status="new-p" data-category="Company Registration" data-mda="caipo" data-search="business activity category selector type financial services manufacturing p-33 caipo">
+        <div class="card-header" onclick="toggleCard(this)">
+          <div class="card-left"><div class="card-meta"><span class="card-id">P-33</span><span class="status-badge new-p">🔴 New</span><span class="category-tag">Company Registration</span><span class="category-tag" style="background:#E8F4FD;color:#1565C0">CAIPO</span></div><div class="card-title">Business Activity Category Selector</div><div class="card-summary">Multi-checkbox grid of ~24 business activity categories (Manufacturing, Financial Services, Professional Services, etc.) with "Other — specify" and a regulated activities gate.</div></div>
+          <div class="card-right"><span class="occurrence-pill">1 CAIPO form</span><span class="expand-icon">▼</span></div>
+        </div>
+        <div class="card-body">
+          <h4>Forms Using This Pattern</h4>
+          <div class="forms-list"><span class="form-chip">IBC Application</span></div>
+          <div class="note-box">24 categories including: Manufacturing, Distribution, Processing, Investment, Professional Services, Financial Services, Computer &amp; Related Services, Research &amp; Development, Real Estate, Rental/Leasing, Business Services, Communications, Construction, Tourism, Health, Education, Environmental, Energy, Transportation, Recreational, and Other. Selecting Financial Services should trigger additional document upload requirements. IF any regulated activity → show "Please specify the enactment under which you are regulated" text field.</div>
+          <a class="dl-link" href="https://amogendukwe-png.github.io/forms-decision-log/?search=P-33" target="_blank">↗ View decisions tagged P-33</a>
+        </div>
+      </div>
+
+      <!-- P-34 -->
+      <div class="pattern-card new-p" data-status="new-p" data-category="Legal Filing" data-mda="caipo" data-search="domain url ownership whois registrant technical contact p-34 caipo">
+        <div class="card-header" onclick="toggleCard(this)">
+          <div class="card-left"><div class="card-meta"><span class="card-id">P-34</span><span class="status-badge new-p">🔴 New</span><span class="category-tag">Legal Filing</span><span class="category-tag" style="background:#E8F4FD;color:#1565C0">CAIPO</span></div><div class="card-title">Domain / URL Ownership Block</div><div class="card-summary">WHOIS details for a domain name being used in a proposed company name, including registrant, admin, and technical contacts with record dates.</div></div>
+          <div class="card-right"><span class="occurrence-pill">1 CAIPO form</span><span class="expand-icon">▼</span></div>
+        </div>
+        <div class="card-body">
+          <h4>Forms Using This Pattern</h4>
+          <div class="forms-list"><span class="form-chip">URL Declaration</span></div>
+          <div class="note-box">Fields: URL, Domain Name, Registrant (Name, Email, Address, Phone, Fax), Administrative Contact (same), Technical Contact (same), Record Created Date, Record Expires Date. Confirm with CAIPO whether an automated WHOIS lookup tool can be embedded to pre-populate these fields — this would significantly reduce user effort (see Q-33). Required only when proposed company name contains a domain extension (.com, .org, .net, .bb, etc.).</div>
+          <a class="dl-link" href="https://amogendukwe-png.github.io/forms-decision-log/?search=P-34" target="_blank">↗ View decisions tagged P-34</a>
+        </div>
+      </div>
+
+      <!-- P-35 -->
+      <div class="pattern-card new-p" data-status="new-p" data-category="Company Registration" data-mda="caipo" data-search="share structure classes maximum number transfer restrictions p-35 caipo">
+        <div class="card-header" onclick="toggleCard(this)">
+          <div class="card-left"><div class="card-meta"><span class="card-id">P-35</span><span class="status-badge new-p">🔴 New</span><span class="category-tag">Company Registration</span><span class="category-tag" style="background:#E8F4FD;color:#1565C0">CAIPO</span></div><div class="card-title">Share Structure Block</div><div class="card-summary">Classes of shares authorised for issue, maximum number, and any restrictions on transfer. Structural filing block for reincorporation and articles amendments.</div></div>
+          <div class="card-right"><span class="occurrence-pill">1 CAIPO form</span><span class="expand-icon">▼</span></div>
+        </div>
+        <div class="card-body">
+          <h4>Forms Using This Pattern</h4>
+          <div class="forms-list"><span class="form-chip">Articles of Reincorporation</span></div>
+          <div class="note-box">Looping row: Share Class (e.g., Common, Preferred), Maximum Number (or "Unlimited"), Par Value, Special Rights/Restrictions. Transfer Restrictions: Text Area (if any). Minimum 1 share class. Consider a guided wizard — many filers are not experienced with company law. Likely to recur on any articles amendment or new incorporation form.</div>
+          <a class="dl-link" href="https://amogendukwe-png.github.io/forms-decision-log/?search=P-35" target="_blank">↗ View decisions tagged P-35</a>
+        </div>
+      </div>
+
+      <!-- P-36 -->
+      <div class="pattern-card new-p" data-status="new-p" data-category="Company Registration" data-mda="caipo" data-search="cessation cancellation details ceasing business external company p-36 caipo">
+        <div class="card-header" onclick="toggleCard(this)">
+          <div class="card-left"><div class="card-meta"><span class="card-id">P-36</span><span class="status-badge new-p">🔴 New</span><span class="category-tag">Company Registration</span><span class="category-tag" style="background:#E8F4FD;color:#1565C0">CAIPO</span></div><div class="card-title">Cessation / Cancellation Details Block</div><div class="card-summary">Date and description of cessation of operations in Barbados for an external company filing notice of cancellation.</div></div>
+          <div class="card-right"><span class="occurrence-pill">1 CAIPO form</span><span class="expand-icon">▼</span></div>
+        </div>
+        <div class="card-body">
+          <h4>Forms Using This Pattern</h4>
+          <div class="forms-list"><span class="form-chip">Notice of Cancellation (External Company)</span></div>
+          <div class="note-box">Fields: Date of Cessation (Date Picker), Details of Cessation of Undertaking in Barbados (Text Area), Outstanding Obligations (optional Text Area). Show a clear warning that all legal obligations in Barbados must be settled before cancellation. Likely to recur on voluntary dissolution and deregistration forms.</div>
+          <a class="dl-link" href="https://amogendukwe-png.github.io/forms-decision-log/?search=P-36" target="_blank">↗ View decisions tagged P-36</a>
+        </div>
+      </div>
+
+      <!-- P-37 -->
+      <div class="pattern-card new-p" data-status="new-p" data-category="Complaints" data-mda="caipo" data-search="complaint description block nature caricom csme refused entry treatment p-37 caipo">
+        <div class="card-header" onclick="toggleCard(this)">
+          <div class="card-left"><div class="card-meta"><span class="card-id">P-37</span><span class="status-badge new-p">🔴 New</span><span class="category-tag">Complaints</span><span class="category-tag" style="background:#E8F4FD;color:#1565C0">CAIPO</span></div><div class="card-title">Complaint Description Block</div><div class="card-summary">Nature of complaint with multi-select department and type checkboxes, purpose of visit classification, free-text description, and steps already taken.</div></div>
+          <div class="card-right"><span class="occurrence-pill">1 CAIPO form</span><span class="expand-icon">▼</span></div>
+        </div>
+        <div class="card-body">
+          <h4>Forms Using This Pattern</h4>
+          <div class="forms-list"><span class="form-chip">CARICOM/CSME Complaints Form</span></div>
+          <div class="note-box">Department(s) involved: Multi-checkbox (Immigration, Customs, Police, Security, Accreditation Council, Registrar of Companies, Ministry of..., Other). Complaint type: Multi-checkbox (Refused Entry, Refused Boarding, Treatment, Refused Recognition, Other). Purpose of visit: Radio (General Travel, Free Movement of Skills, Free Movement of Capital, Right of Establishment, Free Movement of Services, Other). Complaint description: Text Area (Required). Steps taken: Text Area (Optional). Confirm with CAIPO whether this is a CARICOM-level form or processed locally by the CSME Focal Point (Q-31).</div>
+          <a class="dl-link" href="https://amogendukwe-png.github.io/forms-decision-log/?search=P-37" target="_blank">↗ View decisions tagged P-37</a>
+        </div>
+      </div>
+      <div class="no-results" id="noResults" style="display:none">
+        No patterns match your search or filter. Try a different keyword or reset filters.
+      </div>
+
+    
+      <div class="no-results" id="noResults" style="display:none">
+        No patterns match your search or filter. Try a different keyword or reset filters.
+      </div>
+    </div><!-- /pattern-list -->
+
+    <!-- Conditional logic, open questions, how to use -->
+    <!-- ════════ CONDITIONAL LOGIC LIBRARY ════════ -->
+    <div id="conditional-logic" style="margin-top:32px;">
+      <div class="section-heading">Conditional Logic Library</div>
+      <div class="section-body">
+        <div class="logic-row header-row">
+          <div>Rule ID</div><div>Condition (IF)</div><div>Action (THEN)</div><div>Forms Using</div>
+        </div>
+        <div class="logic-row"><div>L-01</div><div>Marital Status = Married</div><div>Show 'Maiden Name' field</div><div>All forms with Marital Status</div></div>
+        <div class="logic-row"><div>L-02</div><div>Mailing address checkbox unchecked</div><div>Show separate Mailing Address fields (Street, District, Parish, Postal Code)</div><div>Standard template</div></div>
+        <div class="logic-row"><div>L-03</div><div>Disability Status = Yes</div><div>Show 'Disability Description' textarea</div><div>Where applicable</div></div>
+        <div class="logic-row"><div>L-04</div><div>Employee voluntarily left? = Yes</div><div>Show Employment Details only. HIDE Layoff and Misconduct blocks.</div><div>Termination of Service</div></div>
+        <div class="logic-row"><div>L-05</div><div>Employee voluntarily left? = No</div><div>Show Employment Details + Misconduct question (employer-initiated path)</div><div>Termination of Service</div></div>
+        <div class="logic-row"><div>L-06</div><div>Labour Dispute = Yes</div><div>Show Strike Participation question + Labour Dispute details textarea</div><div>Termination of Service</div></div>
+        <div class="logic-row"><div>L-07</div><div>Labour Dispute = Yes AND Strike Participation = Yes</div><div>Flag: employee Unemployment Benefit eligibility may be affected (alert NIS officer)</div><div>Termination of Service</div></div>
+        <div class="logic-row"><div>L-08</div><div>Termination type = Layoff</div><div>Show Layoff Details Block (P-15)</div><div>Termination of Service</div></div>
+        <div class="logic-row"><div>L-09</div><div>Holiday Pay given to laid-off employee = Yes</div><div>Show Holiday Pay Period From/To + Amount</div><div>Termination of Service</div></div>
+        <div class="logic-row"><div>L-10</div><div>Employee dismissed for misconduct = Yes</div><div>Show Misconduct Explanation textarea</div><div>Termination of Service</div></div>
+        <div class="logic-row"><div>L-11</div><div>Date of Termination &gt; 7 days in the past</div><div>Show late compliance warning on Start Page</div><div>Termination of Service</div></div>
+        <div class="logic-row"><div>L-12</div><div>Last Day at Work &gt; Date of Termination</div><div>Validation error: "Last Day at Work cannot be after Date of Termination"</div><div>Termination of Service, Claim for Unemployment</div></div>
+        <div class="logic-row"><div>L-13</div><div>Expected Re-employment Date &lt; Date of Layoff</div><div>Validation error: "Re-employment date must be after Date of Layoff"</div><div>Termination of Service</div></div>
+        <div class="logic-row"><div>L-14</div><div>Employee entitled to pension = Yes</div><div>Show Pension Start Date field</div><div>Termination of Service, Old Age Pension</div></div>
+        <div class="logic-row"><div>L-15</div><div>Benefit Type = Survivors'/Death Benefit</div><div>Show Marital/Cohabitation Status Block (P-21)</div><div>Life Certificate</div></div>
+        <div class="logic-row"><div>L-16</div><div>Has Alternate Payee? = Yes</div><div>Show Alternate Payee Block (P-09) + Empowerment Document upload</div><div>Direct Deposit, Old Age Pension</div></div>
+        <div class="logic-row"><div>L-17</div><div>Claimant chooses Direct Deposit = Yes</div><div>Show Banking Details Block (P-08) + Bank Account Proof upload</div><div>Direct Deposit, Old Age Pension</div></div>
+        <div class="logic-row"><div>L-18</div><div>ID Type = National ID Card</div><div>Show NRN field (pre-linked from P-03)</div><div>Employee Online, Self-Employment Reg.</div></div>
+        <div class="logic-row"><div>L-19</div><div>ID Type = Passport</div><div>Show Passport Number + Country of Issue + Expiry Date</div><div>Employee Online, Self-Employment Reg.</div></div>
+        <div class="logic-row"><div>L-20</div><div>Applicant is overseas = Yes</div><div>Show Notarial Certificate upload requirement</div><div>Employee Online</div></div>
+        <div class="logic-row"><div>L-21</div><div>DOB cohort below pensionable age threshold</div><div>Show ineligibility screen</div><div>Old Age Pension — thresholds TBC with NIS (Q-18)</div></div>
+        <div class="logic-row"><div>L-22</div><div>Overseas Employment = Yes</div><div>Show Overseas Employment Block (P-22) — looping</div><div>Old Age Pension</div></div>
+        <div class="logic-row"><div>L-23</div><div>Pension Type = Deferred</div><div>Show Deferred Pension rules and adjusted entitlement fields</div><div>Old Age Pension — confirm with NIS (Q-23)</div></div>
+        <div class="logic-row"><div>L-24</div><div>Termination Certificate submitted → Unemployment Claim started</div><div>Pre-populate NRN, NIN, Employer Details, Employment Dates from Termination Certificate</div><div>Claim for Unemployment (cross-form)</div></div>
+      </div>
+    </div>
+
+    <!-- ════════ OPEN QUESTIONS ════════ -->
+    <div id="open-questions" style="margin-top:32px;">
+      <div class="section-heading">Open Questions for MDA — 34 open &nbsp;|&nbsp; Tag decisions in the <a href="https://amogendukwe-png.github.io/forms-decision-log/" style="color:var(--yellow)">Decision Log</a> with the Question ID when resolved</div>
+      <div class="section-body">
+        <table class="q-table">
+          <thead><tr><th>Ref</th><th>Form</th><th>Question</th><th>Priority</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Q-01</td><td>Termination of Service</td><td>What is the exact format of the NIS Employer Registration Number? Can it be pre-populated from an employer login?</td><td><span class="priority-badge blocker">🔴 Blocker</span></td><td class="status-open">Open</td></tr>
+            <tr><td>Q-02</td><td>Termination of Service</td><td>If the employer submits digitally, does auto-transmission satisfy the 7-day legal obligation, or does a physical copy still need to be delivered?</td><td><span class="priority-badge blocker">🔴 Blocker</span></td><td class="status-open">Open</td></tr>
+            <tr><td>Q-03</td><td>Termination of Service</td><td>Does the digital certificate fully replace all three paper copies, or does any copy still require a wet signature?</td><td><span class="priority-badge blocker">🔴 Blocker</span></td><td class="status-open">Open</td></tr>
+            <tr><td>Q-04</td><td>Termination of Service</td><td>What fields does NIS staff complete in the 'Official Use Only' section? What system will they use to annotate digital submissions?</td><td><span class="priority-badge important">🟡 Important</span></td><td class="status-open">Open</td></tr>
+            <tr><td>Q-05</td><td>Claim for Unemployment</td><td>Will the digital service support a joint applicant + NIS officer session, or will officers complete the form on the applicant's behalf?</td><td><span class="priority-badge blocker">🔴 Blocker</span></td><td class="status-open">Open</td></tr>
+            <tr><td>Q-06</td><td>Claim for Unemployment</td><td>When claimant submits both forms together, should matching fields be pre-populated from the Termination Certificate?</td><td><span class="priority-badge important">🟡 Important</span></td><td class="status-open">Open</td></tr>
+            <tr><td>Q-07</td><td>DP-10</td><td>Confirm the exact format of the NIS Employer Registration Number — is it the same identifier as used on the Termination form?</td><td><span class="priority-badge blocker">🔴 Blocker</span></td><td class="status-open">Open</td></tr>
+            <tr><td>Q-08</td><td>DP-10</td><td>Is EZ Pay available for DP-10 contributions payment? What are the technical integration requirements?</td><td><span class="priority-badge important">🟡 Important</span></td><td class="status-open">Open</td></tr>
+            <tr><td>Q-09</td><td>DP-10</td><td>Can employers upload a payroll CSV/Excel to pre-populate the Earnings Grid rather than entering manually?</td><td><span class="priority-badge important">🟡 Important</span></td><td class="status-open">Open</td></tr>
+            <tr><td>Q-10</td><td>Direct Deposit</td><td>What documents are accepted as proof of empowerment for an Alternate Payee? Is there a standard NIS form?</td><td><span class="priority-badge important">🟡 Important</span></td><td class="status-open">Open</td></tr>
+            <tr><td>Q-11</td><td>Direct Deposit</td><td>What is the exact TAMIS Number format? Is it required or optional? Should it be added to the standard Personal Details Block across NIS/BRA forms?</td><td><span class="priority-badge nice">🟢 Nice to Know</span></td><td class="status-open">Open</td></tr>
+            <tr><td>Q-12</td><td>Direct Deposit</td><td>Can NIS provide a complete list of accepted Barbados banks and branches for the Banking Details Block dropdown?</td><td><span class="priority-badge important">🟡 Important</span></td><td class="status-open">Open</td></tr>
+            <tr><td>Q-13</td><td>Educational Status</td><td>What is the exact submission deadline rule for the Educational Status Form? How should it surface in the digital service?</td><td><span class="priority-badge important">🟡 Important</span></td><td class="status-open">Open</td></tr>
+            <tr><td>Q-14</td><td>Educational Status</td><td>Does NIS accept a digital signature from an authorised institutional signatory, or is a wet signature still required?</td><td><span class="priority-badge blocker">🔴 Blocker</span></td><td class="status-open">Open</td></tr>
+            <tr><td>Q-15</td><td>Life Certificate</td><td>How frequently must claimants submit a Life Certificate — annual, biannual, or variable by benefit type?</td><td><span class="priority-badge blocker">🔴 Blocker</span></td><td class="status-open">Open</td></tr>
+            <tr><td>Q-16</td><td>Life Certificate</td><td>Please confirm the current list of eligible witness types. Has this changed recently?</td><td><span class="priority-badge important">🟡 Important</span></td><td class="status-open">Open</td></tr>
+            <tr><td>Q-17</td><td>Life Certificate</td><td>Can the witness certification be completed digitally, or does it require physical presence and a wet signature?</td><td><span class="priority-badge blocker">🔴 Blocker</span></td><td class="status-open">Open</td></tr>
+            <tr><td>Q-18</td><td>Old Age Pension</td><td>What are the current pensionable age thresholds by date-of-birth cohort? Needed to build the eligibility gate.</td><td><span class="priority-badge blocker">🔴 Blocker</span></td><td class="status-open">Open</td></tr>
+            <tr><td>Q-19</td><td>Old Age Pension</td><td>Which countries have bilateral NIS/pension agreements with Barbados that count overseas contributions toward the Barbados pension?</td><td><span class="priority-badge important">🟡 Important</span></td><td class="status-open">Open</td></tr>
+            <tr><td>Q-20</td><td>Old Age Pension</td><td>What are the entitlement rules for deferred and early pension and how do they affect digital form fields?</td><td><span class="priority-badge important">🟡 Important</span></td><td class="status-open">Open</td></tr>
+            <tr><td>Q-21</td><td>Employee Online Reg.</td><td>The paper form sends username + password to email — recommend a one-time activation link instead. Can NIS confirm their technical capability?</td><td><span class="priority-badge blocker">🔴 Blocker</span></td><td class="status-open">Open</td></tr>
+            <tr><td>Q-22</td><td>Self-Employment Reg.</td><td>What is the exact format of the CAIPO Business Registration Number? Appears to be 6 alphanumeric chars — please confirm.</td><td><span class="priority-badge important">🟡 Important</span></td><td class="status-open">Open</td></tr>
+            <tr><td>Q-23</td><td>Self-Employment Reg.</td><td>How is the NIS self-employment contribution calculated from Estimated Monthly Income? Is there a rate schedule we should build in?</td><td><span class="priority-badge blocker">🔴 Blocker</span></td><td class="status-open">Open</td></tr>
+            <tr><td>Q-24</td><td>All Forms</td><td>Should the Fax Number field be retained in digital employer-facing forms? Is there any legal/operational reason to keep it?</td><td><span class="priority-badge nice">🟢 Nice to Know</span></td><td class="status-open">Open</td></tr>
+            <tr><td>Q-25</td><td>All Forms</td><td>The NIS Number is described as ~6 digits. Please confirm the exact length and format for validation purposes.</td><td><span class="priority-badge important">🟡 Important</span></td><td class="status-open">Open</td></tr>
+                      <tr><td>Q-26</td><td>CAIPO — IBC Application</td><td>What is the current fee structure for IBC licences? Should payment be integrated into the digital IBC Application form?</td><td><span class="priority-badge blocker">🔴 Blocker</span></td><td class="status-open">Open</td></tr>
+            <tr><td>Q-27</td><td>CAIPO — All declaration forms</td><td>Can statutory declarations (Company Declaration, IBC declaration) be accepted with digital signatures, or must originals be submitted to CAIPO?</td><td><span class="priority-badge blocker">🔴 Blocker</span></td><td class="status-open">Open</td></tr>
+            <tr><td>Q-28</td><td>CAIPO — All company forms</td><td>What is the exact format and validation rule for the CAIPO Company Registration Number (used in P-25)? Is it alphanumeric?</td><td><span class="priority-badge important">🟡 Important</span></td><td class="status-open">Open</td></tr>
+            <tr><td>Q-29</td><td>CAIPO — Name Reservation</td><td>How long is a reserved company name valid after approval? Should the digital service display an expiry date and send reminders?</td><td><span class="priority-badge important">🟡 Important</span></td><td class="status-open">Open</td></tr>
+            <tr><td>Q-30</td><td>CAIPO — Form of Authorisation</td><td>Can the Form of Authorisation (P-29) be submitted digitally, or must it be notarised and physically delivered to CAIPO?</td><td><span class="priority-badge blocker">🔴 Blocker</span></td><td class="status-open">Open</td></tr>
+            <tr><td>Q-31</td><td>CAIPO — CSME Complaints</td><td>Is the CARICOM/CSME Complaints Form (P-37) processed by CAIPO or by the CSME Focal Point? Who receives digital submissions?</td><td><span class="priority-badge important">🟡 Important</span></td><td class="status-open">Open</td></tr>
+            <tr><td>Q-32</td><td>CAIPO — IBC Application</td><td>For the Fit and Proper declaration (P-30), is a digital response acceptable or does this section require a sworn affidavit?</td><td><span class="priority-badge blocker">🔴 Blocker</span></td><td class="status-open">Open</td></tr>
+            <tr><td>Q-33</td><td>CAIPO — URL Declaration</td><td>Can an automated WHOIS lookup be embedded in the URL Declaration form to pre-populate registrant details (P-34)?</td><td><span class="priority-badge nice">🟢 Nice to Know</span></td><td class="status-open">Open</td></tr>
+            <tr><td>Q-34</td><td>CAIPO — All forms</td><td>Which CAIPO forms are the highest priority for digitisation? Can CAIPO provide a ranked list of forms by submission volume?</td><td><span class="priority-badge important">🟡 Important</span></td><td class="status-open">Open</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ════════ HOW TO USE ════════ -->
+    <div id="how-to-use" style="margin-top:32px;">
+      <div class="how-to">
+        <h2>How to use this library when working on a new form</h2>
+
+        <div class="step">
+          <div class="step-num">1</div>
+          <p><strong>Run a pattern check before writing anything new.</strong> When a new form comes in, search this library for fields that look similar. If the form has a name, address, or contact section — it's P-01, P-02, P-04. Reference those by ID in your spec rather than re-describing them. This is what makes specs faster over time.</p>
+        </div>
+
+        <div class="step">
+          <div class="step-num">2</div>
+          <p><strong>Use this AI prompt to generate a pattern delta for any new form.</strong> Paste it into Claude with the form attached:</p>
+          <div class="prompt-box">You are a service designer working on the GovTech Barbados forms prototyping team.
+
+Analyse the attached form against the GovTech Barbados Pattern Registry (P-01 to P-37).
+
+The registry covers two MDAs: NISSS (P-01 to P-24) and CAIPO (P-25 to P-37).
+Note the MDA context of the form you are analysing — NISSS patterns may appear in CAIPO forms and vice versa.
+
+For each section of the form, output:
+1. MATCHED — pattern ID + name (e.g. "P-02 Barbados Address Block") + note if this is cross-MDA
+2. VARIANT — pattern ID + how this instance differs from the standard (e.g. "P-04 Contact Block — Fax field added")
+3. NEW — a proposed pattern name, description, and field list not covered by any existing pattern
+
+Then output a FORM COMPLEXITY ASSESSMENT using the Form Categorisation criteria (Simple / Medium / Complex).
+
+Finally, list any OPEN QUESTIONS that should be added to the MDA question log, tagged with the relevant MDA.</div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">3</div>
+          <p><strong>Update the registry after each new form.</strong> For each NEW pattern found, add it to the spreadsheet (<code>NISSS_Pattern_Registry.xlsx</code>) — noting the MDA it was found in and this HTML file with status 🔴 New. When a pattern reaches 2 occurrences, update to 🟡 Emerging. At 3, promote to 🟢 Standard. Update the occurrence counter on each existing pattern card.</p>
+        </div>
+
+        <div class="step">
+          <div class="step-num">4</div>
+          <p><strong>Connect decisions to patterns.</strong> When you log a design decision in the <a href="https://amogendukwe-png.github.io/forms-decision-log/" target="_blank">Decision Log</a> that affects a pattern, add the Pattern ID as a tag (e.g., <code>P-06</code>, <code>P-02</code>). The "View decisions" link on each pattern card above will then surface all relevant decisions automatically. Also add the Question ID (e.g., <code>Q-01</code>) as a tag when a question is answered so the log becomes searchable by question.</p>
+        </div>
+
+        <div class="step">
+          <div class="step-num">5</div>
+          <p><strong>Use the Open Questions table as your MDA prep.</strong> Before each MDA session, filter by the form being discussed and share the relevant rows. Answers come back → log in the Decision Log with the Question ID as a tag → mark the question Status as Resolved in this file.</p>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div><!-- /page-layout -->
+
+<!-- ── Footer ── -->
+<footer style="background-color:#00267f;color:rgba(255,255,255,0.75);text-align:center;font-size:0.8125rem;padding:1.25rem 1rem;margin-top:2rem;">
+  <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:1.5rem;flex-wrap:wrap;">
+    <span style="color:white;font-weight:700;">GovTech Barbados — Forms Pattern Library</span>
+    <a href="https://amogendukwe-png.github.io/forms-decision-log/" target="_blank" style="color:#ffc726;text-decoration:underline;">Decision Log</a>
+    <a href="https://alpha.gov.bb" target="_blank" style="color:#ffc726;text-decoration:underline;">alpha.gov.bb</a>
+    <span>Last updated April 2026</span>
+  </div>
+</footer>
+
+<script>
+let activeFilter = 'all';
+let activeCategory = 'all';
+let activeMda = 'all';
+
+function toggleCard(header) {
+  header.classList.toggle('open');
+  const body = header.nextElementSibling;
+  body.classList.toggle('open');
+}
+
+function setFilter(filter, btnEl) {
+  activeFilter = filter;
+  document.querySelectorAll('#filter-all, #filter-standard, #filter-emerging, #filter-new-p').forEach(li => li.classList.remove('active'));
+  if (btnEl) {
+    btnEl.closest('li').classList.add('active');
+  } else {
+    const map = {'all':'filter-all','standard':'filter-standard','emerging':'filter-emerging','new-p':'filter-new-p'};
+    document.getElementById(map[filter])?.classList.add('active');
+  }
+  filterPatterns();
+}
+
+function setMda(mda, btnEl) {
+  activeMda = mda;
+  document.querySelectorAll('#mda-all, #mda-nisss, #mda-caipo').forEach(li => li.classList.remove('active'));
+  if (btnEl) btnEl.closest('li').classList.add('active');
+  filterPatterns();
+}
+
+function setCategory(cat, btnEl) {
+  activeCategory = cat;
+  document.querySelectorAll('[id^="cat-"]').forEach(li => li.classList.remove('active'));
+  if (btnEl) btnEl.closest('li').classList.add('active');
+  filterPatterns();
+}
+
+function filterPatterns() {
+  const query = document.getElementById('searchInput').value.toLowerCase();
+  const cards = document.querySelectorAll('.pattern-card');
+  let visible = 0;
+
+  cards.forEach(card => {
+    const statusOk = activeFilter === 'all' || card.dataset.status === activeFilter;
+    const catFull = card.dataset.category || '';
+    const catOk = activeCategory === 'all'
+      || catFull.toLowerCase().includes(activeCategory.toLowerCase())
+      || (activeCategory === 'Employer' && catFull.includes('Employer'))
+      || (activeCategory === 'Admin' && catFull.includes('Admin'));
+    const mdaVal = card.dataset.mda || '';
+    const mdaOk = activeMda === 'all' || mdaVal.includes(activeMda);
+    const searchOk = !query || (card.dataset.search || '').includes(query) || card.querySelector('.card-title')?.innerText.toLowerCase().includes(query);
+
+    if (statusOk && catOk && mdaOk && searchOk) {
+      card.style.display = '';
+      visible++;
+    } else {
+      card.style.display = 'none';
+    }
+  });
+
+  document.getElementById('noResults').style.display = visible === 0 ? '' : 'none';
+}
+</script>
+</body>
+</html>
