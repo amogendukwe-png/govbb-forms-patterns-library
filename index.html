@@ -607,7 +607,7 @@
 <div class="page-title-band">
   <div class="container">
     <h1>Forms Pattern Library</h1>
-    <p>Reusable patterns, field definitions, and design standards for GovTech Barbados digital forms — spanning NISSS, CAIPO, and future MDAs. Use when analysing new forms, building specs, or logging decisions with MDAs.</p>
+    <p>Reusable patterns, field definitions, and design standards for GovTech Barbados digital forms. Use when analysing new forms, building specs, or logging decisions with MDAs.</p>
   </div>
 </div>
 
@@ -620,6 +620,16 @@
     <div class="search-wrap">
       <label for="searchInput" style="display:block;font-size:0.75rem;font-weight:700;color:#595959;margin-bottom:0.375rem;text-transform:uppercase;letter-spacing:0.06em;">Search patterns</label>
       <input type="text" id="searchInput" placeholder="e.g. address, declaration…" oninput="filterPatterns()" autocomplete="off">
+    </div>
+
+    <div class="sidebar-card" style="background:#e5e9f2;border:1px solid #99a8cc;">
+      <h3 style="color:#00267f;">Quick Links</h3>
+      <ul>
+        <li><a href="conditional-logic.html">Conditional Logic Library</a></li>
+        <li><a href="open-questions.html">Open MDA Questions</a></li>
+        <li><a href="how-to-use.html">How to Use</a></li>
+        <li><a href="https://amogendukwe-png.github.io/forms-decision-log/" target="_blank">&#8599; Decision Log</a></li>
+      </ul>
     </div>
 
     <div class="sidebar-card">
@@ -658,16 +668,6 @@
         <li id="cat-company"><button onclick="setCategory('Company Registration', this)">Company Registration</button></li>
         <li id="cat-legal"><button onclick="setCategory('Legal Filing', this)">Legal Filing</button></li>
         <li id="cat-complaints"><button onclick="setCategory('Complaints', this)">Complaints</button></li>
-      </ul>
-    </div>
-
-    <div class="sidebar-card">
-      <h3>Quick Links</h3>
-      <ul>
-        <li><a href="#conditional-logic">Conditional Logic Library</a></li>
-        <li><a href="#open-questions">Open MDA Questions</a></li>
-        <li><a href="#how-to-use">How to Use</a></li>
-        <li><a href="https://amogendukwe-png.github.io/forms-decision-log/" target="_blank">&#8599; Decision Log</a></li>
       </ul>
     </div>
 
@@ -806,7 +806,7 @@
           <table class="field-table">
             <thead><tr><th>Field</th><th>Component</th><th>Label / Help Text</th><th>Required</th><th>Validation</th></tr></thead>
             <tbody>
-              <tr><td>Date of Birth</td><td>Date Picker</td><td>Label: "Date of Birth"<br>Format: MM/DD/YYYY</td><td class="required-yes">Yes</td><td>Cannot be future date. Age range varies by form.</td></tr>
+              <tr><td>Date of Birth</td><td>Date Picker</td><td>Label: "Date of Birth"<br>Format: DDMMYYYY</td><td class="required-yes">Yes</td><td>Cannot be future date. Age range varies by form.</td></tr>
               <tr><td>National Registration No.</td><td>Text Input (ID)</td><td>Label: "National Registration Number"<br>Format: YYMMDD-XXXX<br>Help: "Find this on your National ID card"</td><td class="required-yes">Yes</td><td>Pattern: YYMMDD-XXXX</td></tr>
               <tr><td>National Insurance No.</td><td>Text Input (ID)</td><td>Label: "National Insurance Number"<br>Help: "Find this on your NIS card or payslip"</td><td class="required-yes">Yes</td><td>Numeric, exact length 6 digits (⚠ confirm with NIS)</td></tr>
               <tr><td>Gender</td><td>Radio Buttons</td><td>Label: "Gender"<br>Options: Male | Female | Other | Prefer not to say</td><td class="required-cond">Varies</td><td>Must select one</td></tr>
@@ -961,10 +961,10 @@
             <tbody>
               <tr><td>Occupation</td><td>Text Input</td><td>Label: "Occupation"<br>Help: "Job title or role held"</td><td class="required-yes">Yes</td><td>Max 200 chars</td></tr>
               <tr><td>Position within Organisation</td><td>Text Input</td><td>Label: "Position within Organisation"<br>Help: "e.g., Supervisor, Junior Clerk"</td><td class="required-yes">Yes</td><td>Max 200 chars</td></tr>
-              <tr><td>Date Employment Commenced</td><td>Date Picker</td><td>Label: "Date Employment Commenced"<br>Format: YYYY-MM-DD</td><td class="required-yes">Yes</td><td>Cannot be future. Must be before Date of Termination.</td></tr>
-              <tr><td>Last Day at Work</td><td>Date Picker</td><td>Label: "Last Day at Work"<br>Format: YYYY-MM-DD</td><td class="required-yes">Yes</td><td>Cannot be future. Must be ≤ Date of Termination.</td></tr>
-              <tr><td>Date of Termination</td><td>Date Picker</td><td>Label: "Date of Termination"<br>Format: YYYY-MM-DD<br>Help: See contextual examples panel</td><td class="required-yes">Yes</td><td>Cannot be future. Must be ≥ Last Day at Work. If &gt;7 days past → show compliance warning.</td></tr>
-              <tr><td>Last Day for Which Employee Will Be Paid</td><td>Date Picker</td><td>Label: "Last Day for Which Employee Will Be Paid"<br>Format: YYYY-MM-DD</td><td class="required-yes">Yes</td><td>Must be ≥ Date of Termination.</td></tr>
+              <tr><td>Date Employment Commenced</td><td>Date Picker</td><td>Label: "Date Employment Commenced"<br>Format: DDMMYYYY</td><td class="required-yes">Yes</td><td>Cannot be future. Must be before Date of Termination.</td></tr>
+              <tr><td>Last Day at Work</td><td>Date Picker</td><td>Label: "Last Day at Work"<br>Format: DDMMYYYY</td><td class="required-yes">Yes</td><td>Cannot be future. Must be ≤ Date of Termination.</td></tr>
+              <tr><td>Date of Termination</td><td>Date Picker</td><td>Label: "Date of Termination"<br>Format: DDMMYYYY<br>Help: See contextual examples panel</td><td class="required-yes">Yes</td><td>Cannot be future. Must be ≥ Last Day at Work. If &gt;7 days past → show compliance warning.</td></tr>
+              <tr><td>Last Day for Which Employee Will Be Paid</td><td>Date Picker</td><td>Label: "Last Day for Which Employee Will Be Paid"<br>Format: DDMMYYYY</td><td class="required-yes">Yes</td><td>Must be ≥ Date of Termination.</td></tr>
             </tbody>
           </table>
           <h4>Design Notes</h4>
@@ -1174,7 +1174,7 @@
             <thead><tr><th>Field</th><th>Component</th><th>Label</th><th>Required</th><th>Validation</th></tr></thead>
             <tbody>
               <tr><td>Pension entitlement?</td><td>Radio Buttons</td><td>"Is the employee receiving or entitled to a pension from the employer?"<br>Help: "This refers to an employer-provided pension, NOT NIS Old-Age Pension."<br>Options: Yes | No</td><td class="required-yes">Yes</td><td>—</td></tr>
-              <tr><td>Pension Start Date</td><td>Date Picker</td><td>Label: "Pension Start Date"<br>Format: YYYY-MM-DD</td><td class="required-cond">Conditional (if Yes)</td><td>Cannot be before Date of Termination</td></tr>
+              <tr><td>Pension Start Date</td><td>Date Picker</td><td>Label: "Pension Start Date"<br>Format: DDMMYYYY</td><td class="required-cond">Conditional (if Yes)</td><td>Cannot be before Date of Termination</td></tr>
             </tbody>
           </table>
           <div class="flag-box">⚠ Help text MUST distinguish employer pension from NIS pension — this is a frequent point of confusion.</div>
@@ -1234,7 +1234,7 @@
           <table class="field-table">
             <thead><tr><th>Field</th><th>Component</th><th>Label</th><th>Required</th><th>Validation</th></tr></thead>
             <tbody>
-              <tr><td>Date of Layoff</td><td>Date Picker</td><td>"Date of Layoff" — YYYY-MM-DD</td><td class="required-cond">Conditional</td><td>Cannot be future date</td></tr>
+              <tr><td>Date of Layoff</td><td>Date Picker</td><td>"Date of Layoff" — DDMMYYYY</td><td class="required-cond">Conditional</td><td>Cannot be future date</td></tr>
               <tr><td>Expected Date of Re-employment</td><td>Date Picker</td><td>"Expected Date of Re-employment"<br>Help: "Leave blank if unknown."</td><td class="required-no">No</td><td>Must be after Date of Layoff if provided</td></tr>
               <tr><td>Holiday pay given?</td><td>Radio</td><td>Options: Yes | No</td><td class="required-cond">Conditional</td><td>Triggers holiday pay fields if Yes</td></tr>
               <tr><td>Holiday Pay Period From/To</td><td>Date Pickers</td><td>"Holiday Pay Period: From / To"</td><td class="required-cond">Conditional (if holiday pay Yes)</td><td>From must be before To</td></tr>
@@ -1689,131 +1689,6 @@
 
     <!-- Conditional logic, open questions, how to use -->
     <!-- ════════ CONDITIONAL LOGIC LIBRARY ════════ -->
-    <div id="conditional-logic" style="margin-top:32px;">
-      <div class="section-heading">Conditional Logic Library</div>
-      <div class="section-body">
-        <div class="logic-row header-row">
-          <div>Rule ID</div><div>Condition (IF)</div><div>Action (THEN)</div><div>Forms Using</div>
-        </div>
-        <div class="logic-row"><div>L-01</div><div>Marital Status = Married</div><div>Show 'Maiden Name' field</div><div>All forms with Marital Status</div></div>
-        <div class="logic-row"><div>L-02</div><div>Mailing address checkbox unchecked</div><div>Show separate Mailing Address fields (Street, District, Parish, Postal Code)</div><div>Standard template</div></div>
-        <div class="logic-row"><div>L-03</div><div>Disability Status = Yes</div><div>Show 'Disability Description' textarea</div><div>Where applicable</div></div>
-        <div class="logic-row"><div>L-04</div><div>Employee voluntarily left? = Yes</div><div>Show Employment Details only. HIDE Layoff and Misconduct blocks.</div><div>Termination of Service</div></div>
-        <div class="logic-row"><div>L-05</div><div>Employee voluntarily left? = No</div><div>Show Employment Details + Misconduct question (employer-initiated path)</div><div>Termination of Service</div></div>
-        <div class="logic-row"><div>L-06</div><div>Labour Dispute = Yes</div><div>Show Strike Participation question + Labour Dispute details textarea</div><div>Termination of Service</div></div>
-        <div class="logic-row"><div>L-07</div><div>Labour Dispute = Yes AND Strike Participation = Yes</div><div>Flag: employee Unemployment Benefit eligibility may be affected (alert NIS officer)</div><div>Termination of Service</div></div>
-        <div class="logic-row"><div>L-08</div><div>Termination type = Layoff</div><div>Show Layoff Details Block (P-15)</div><div>Termination of Service</div></div>
-        <div class="logic-row"><div>L-09</div><div>Holiday Pay given to laid-off employee = Yes</div><div>Show Holiday Pay Period From/To + Amount</div><div>Termination of Service</div></div>
-        <div class="logic-row"><div>L-10</div><div>Employee dismissed for misconduct = Yes</div><div>Show Misconduct Explanation textarea</div><div>Termination of Service</div></div>
-        <div class="logic-row"><div>L-11</div><div>Date of Termination &gt; 7 days in the past</div><div>Show late compliance warning on Start Page</div><div>Termination of Service</div></div>
-        <div class="logic-row"><div>L-12</div><div>Last Day at Work &gt; Date of Termination</div><div>Validation error: "Last Day at Work cannot be after Date of Termination"</div><div>Termination of Service, Claim for Unemployment</div></div>
-        <div class="logic-row"><div>L-13</div><div>Expected Re-employment Date &lt; Date of Layoff</div><div>Validation error: "Re-employment date must be after Date of Layoff"</div><div>Termination of Service</div></div>
-        <div class="logic-row"><div>L-14</div><div>Employee entitled to pension = Yes</div><div>Show Pension Start Date field</div><div>Termination of Service, Old Age Pension</div></div>
-        <div class="logic-row"><div>L-15</div><div>Benefit Type = Survivors'/Death Benefit</div><div>Show Marital/Cohabitation Status Block (P-21)</div><div>Life Certificate</div></div>
-        <div class="logic-row"><div>L-16</div><div>Has Alternate Payee? = Yes</div><div>Show Alternate Payee Block (P-09) + Empowerment Document upload</div><div>Direct Deposit, Old Age Pension</div></div>
-        <div class="logic-row"><div>L-17</div><div>Claimant chooses Direct Deposit = Yes</div><div>Show Banking Details Block (P-08) + Bank Account Proof upload</div><div>Direct Deposit, Old Age Pension</div></div>
-        <div class="logic-row"><div>L-18</div><div>ID Type = National ID Card</div><div>Show NRN field (pre-linked from P-03)</div><div>Employee Online, Self-Employment Reg.</div></div>
-        <div class="logic-row"><div>L-19</div><div>ID Type = Passport</div><div>Show Passport Number + Country of Issue + Expiry Date</div><div>Employee Online, Self-Employment Reg.</div></div>
-        <div class="logic-row"><div>L-20</div><div>Applicant is overseas = Yes</div><div>Show Notarial Certificate upload requirement</div><div>Employee Online</div></div>
-        <div class="logic-row"><div>L-21</div><div>DOB cohort below pensionable age threshold</div><div>Show ineligibility screen</div><div>Old Age Pension — thresholds TBC with NIS (Q-18)</div></div>
-        <div class="logic-row"><div>L-22</div><div>Overseas Employment = Yes</div><div>Show Overseas Employment Block (P-22) — looping</div><div>Old Age Pension</div></div>
-        <div class="logic-row"><div>L-23</div><div>Pension Type = Deferred</div><div>Show Deferred Pension rules and adjusted entitlement fields</div><div>Old Age Pension — confirm with NIS (Q-23)</div></div>
-        <div class="logic-row"><div>L-24</div><div>Termination Certificate submitted → Unemployment Claim started</div><div>Pre-populate NRN, NIN, Employer Details, Employment Dates from Termination Certificate</div><div>Claim for Unemployment (cross-form)</div></div>
-      </div>
-    </div>
-
-    <!-- ════════ OPEN QUESTIONS ════════ -->
-    <div id="open-questions" style="margin-top:32px;">
-      <div class="section-heading">Open Questions for MDA — 34 open &nbsp;|&nbsp; Tag decisions in the <a href="https://amogendukwe-png.github.io/forms-decision-log/" style="color:var(--yellow)">Decision Log</a> with the Question ID when resolved</div>
-      <div class="section-body">
-        <table class="q-table">
-          <thead><tr><th>Ref</th><th>Form</th><th>Question</th><th>Priority</th><th>Status</th></tr></thead>
-          <tbody>
-            <tr><td>Q-01</td><td>Termination of Service</td><td>What is the exact format of the NIS Employer Registration Number? Can it be pre-populated from an employer login?</td><td><span class="priority-badge blocker">🔴 Blocker</span></td><td class="status-open">Open</td></tr>
-            <tr><td>Q-02</td><td>Termination of Service</td><td>If the employer submits digitally, does auto-transmission satisfy the 7-day legal obligation, or does a physical copy still need to be delivered?</td><td><span class="priority-badge blocker">🔴 Blocker</span></td><td class="status-open">Open</td></tr>
-            <tr><td>Q-03</td><td>Termination of Service</td><td>Does the digital certificate fully replace all three paper copies, or does any copy still require a wet signature?</td><td><span class="priority-badge blocker">🔴 Blocker</span></td><td class="status-open">Open</td></tr>
-            <tr><td>Q-04</td><td>Termination of Service</td><td>What fields does NIS staff complete in the 'Official Use Only' section? What system will they use to annotate digital submissions?</td><td><span class="priority-badge important">🟡 Important</span></td><td class="status-open">Open</td></tr>
-            <tr><td>Q-05</td><td>Claim for Unemployment</td><td>Will the digital service support a joint applicant + NIS officer session, or will officers complete the form on the applicant's behalf?</td><td><span class="priority-badge blocker">🔴 Blocker</span></td><td class="status-open">Open</td></tr>
-            <tr><td>Q-06</td><td>Claim for Unemployment</td><td>When claimant submits both forms together, should matching fields be pre-populated from the Termination Certificate?</td><td><span class="priority-badge important">🟡 Important</span></td><td class="status-open">Open</td></tr>
-            <tr><td>Q-07</td><td>DP-10</td><td>Confirm the exact format of the NIS Employer Registration Number — is it the same identifier as used on the Termination form?</td><td><span class="priority-badge blocker">🔴 Blocker</span></td><td class="status-open">Open</td></tr>
-            <tr><td>Q-08</td><td>DP-10</td><td>Is EZ Pay available for DP-10 contributions payment? What are the technical integration requirements?</td><td><span class="priority-badge important">🟡 Important</span></td><td class="status-open">Open</td></tr>
-            <tr><td>Q-09</td><td>DP-10</td><td>Can employers upload a payroll CSV/Excel to pre-populate the Earnings Grid rather than entering manually?</td><td><span class="priority-badge important">🟡 Important</span></td><td class="status-open">Open</td></tr>
-            <tr><td>Q-10</td><td>Direct Deposit</td><td>What documents are accepted as proof of empowerment for an Alternate Payee? Is there a standard NIS form?</td><td><span class="priority-badge important">🟡 Important</span></td><td class="status-open">Open</td></tr>
-            <tr><td>Q-11</td><td>Direct Deposit</td><td>What is the exact TAMIS Number format? Is it required or optional? Should it be added to the standard Personal Details Block across NIS/BRA forms?</td><td><span class="priority-badge nice">🟢 Nice to Know</span></td><td class="status-open">Open</td></tr>
-            <tr><td>Q-12</td><td>Direct Deposit</td><td>Can NIS provide a complete list of accepted Barbados banks and branches for the Banking Details Block dropdown?</td><td><span class="priority-badge important">🟡 Important</span></td><td class="status-open">Open</td></tr>
-            <tr><td>Q-13</td><td>Educational Status</td><td>What is the exact submission deadline rule for the Educational Status Form? How should it surface in the digital service?</td><td><span class="priority-badge important">🟡 Important</span></td><td class="status-open">Open</td></tr>
-            <tr><td>Q-14</td><td>Educational Status</td><td>Does NIS accept a digital signature from an authorised institutional signatory, or is a wet signature still required?</td><td><span class="priority-badge blocker">🔴 Blocker</span></td><td class="status-open">Open</td></tr>
-            <tr><td>Q-15</td><td>Life Certificate</td><td>How frequently must claimants submit a Life Certificate — annual, biannual, or variable by benefit type?</td><td><span class="priority-badge blocker">🔴 Blocker</span></td><td class="status-open">Open</td></tr>
-            <tr><td>Q-16</td><td>Life Certificate</td><td>Please confirm the current list of eligible witness types. Has this changed recently?</td><td><span class="priority-badge important">🟡 Important</span></td><td class="status-open">Open</td></tr>
-            <tr><td>Q-17</td><td>Life Certificate</td><td>Can the witness certification be completed digitally, or does it require physical presence and a wet signature?</td><td><span class="priority-badge blocker">🔴 Blocker</span></td><td class="status-open">Open</td></tr>
-            <tr><td>Q-18</td><td>Old Age Pension</td><td>What are the current pensionable age thresholds by date-of-birth cohort? Needed to build the eligibility gate.</td><td><span class="priority-badge blocker">🔴 Blocker</span></td><td class="status-open">Open</td></tr>
-            <tr><td>Q-19</td><td>Old Age Pension</td><td>Which countries have bilateral NIS/pension agreements with Barbados that count overseas contributions toward the Barbados pension?</td><td><span class="priority-badge important">🟡 Important</span></td><td class="status-open">Open</td></tr>
-            <tr><td>Q-20</td><td>Old Age Pension</td><td>What are the entitlement rules for deferred and early pension and how do they affect digital form fields?</td><td><span class="priority-badge important">🟡 Important</span></td><td class="status-open">Open</td></tr>
-            <tr><td>Q-21</td><td>Employee Online Reg.</td><td>The paper form sends username + password to email — recommend a one-time activation link instead. Can NIS confirm their technical capability?</td><td><span class="priority-badge blocker">🔴 Blocker</span></td><td class="status-open">Open</td></tr>
-            <tr><td>Q-22</td><td>Self-Employment Reg.</td><td>What is the exact format of the CAIPO Business Registration Number? Appears to be 6 alphanumeric chars — please confirm.</td><td><span class="priority-badge important">🟡 Important</span></td><td class="status-open">Open</td></tr>
-            <tr><td>Q-23</td><td>Self-Employment Reg.</td><td>How is the NIS self-employment contribution calculated from Estimated Monthly Income? Is there a rate schedule we should build in?</td><td><span class="priority-badge blocker">🔴 Blocker</span></td><td class="status-open">Open</td></tr>
-            <tr><td>Q-24</td><td>All Forms</td><td>Should the Fax Number field be retained in digital employer-facing forms? Is there any legal/operational reason to keep it?</td><td><span class="priority-badge nice">🟢 Nice to Know</span></td><td class="status-open">Open</td></tr>
-            <tr><td>Q-25</td><td>All Forms</td><td>The NIS Number is described as ~6 digits. Please confirm the exact length and format for validation purposes.</td><td><span class="priority-badge important">🟡 Important</span></td><td class="status-open">Open</td></tr>
-                      <tr><td>Q-26</td><td>CAIPO — IBC Application</td><td>What is the current fee structure for IBC licences? Should payment be integrated into the digital IBC Application form?</td><td><span class="priority-badge blocker">🔴 Blocker</span></td><td class="status-open">Open</td></tr>
-            <tr><td>Q-27</td><td>CAIPO — All declaration forms</td><td>Can statutory declarations (Company Declaration, IBC declaration) be accepted with digital signatures, or must originals be submitted to CAIPO?</td><td><span class="priority-badge blocker">🔴 Blocker</span></td><td class="status-open">Open</td></tr>
-            <tr><td>Q-28</td><td>CAIPO — All company forms</td><td>What is the exact format and validation rule for the CAIPO Company Registration Number (used in P-25)? Is it alphanumeric?</td><td><span class="priority-badge important">🟡 Important</span></td><td class="status-open">Open</td></tr>
-            <tr><td>Q-29</td><td>CAIPO — Name Reservation</td><td>How long is a reserved company name valid after approval? Should the digital service display an expiry date and send reminders?</td><td><span class="priority-badge important">🟡 Important</span></td><td class="status-open">Open</td></tr>
-            <tr><td>Q-30</td><td>CAIPO — Form of Authorisation</td><td>Can the Form of Authorisation (P-29) be submitted digitally, or must it be notarised and physically delivered to CAIPO?</td><td><span class="priority-badge blocker">🔴 Blocker</span></td><td class="status-open">Open</td></tr>
-            <tr><td>Q-31</td><td>CAIPO — CSME Complaints</td><td>Is the CARICOM/CSME Complaints Form (P-37) processed by CAIPO or by the CSME Focal Point? Who receives digital submissions?</td><td><span class="priority-badge important">🟡 Important</span></td><td class="status-open">Open</td></tr>
-            <tr><td>Q-32</td><td>CAIPO — IBC Application</td><td>For the Fit and Proper declaration (P-30), is a digital response acceptable or does this section require a sworn affidavit?</td><td><span class="priority-badge blocker">🔴 Blocker</span></td><td class="status-open">Open</td></tr>
-            <tr><td>Q-33</td><td>CAIPO — URL Declaration</td><td>Can an automated WHOIS lookup be embedded in the URL Declaration form to pre-populate registrant details (P-34)?</td><td><span class="priority-badge nice">🟢 Nice to Know</span></td><td class="status-open">Open</td></tr>
-            <tr><td>Q-34</td><td>CAIPO — All forms</td><td>Which CAIPO forms are the highest priority for digitisation? Can CAIPO provide a ranked list of forms by submission volume?</td><td><span class="priority-badge important">🟡 Important</span></td><td class="status-open">Open</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- ════════ HOW TO USE ════════ -->
-    <div id="how-to-use" style="margin-top:32px;">
-      <div class="how-to">
-        <h2>How to use this library when working on a new form</h2>
-
-        <div class="step">
-          <div class="step-num">1</div>
-          <p><strong>Run a pattern check before writing anything new.</strong> When a new form comes in, search this library for fields that look similar. If the form has a name, address, or contact section — it's P-01, P-02, P-04. Reference those by ID in your spec rather than re-describing them. This is what makes specs faster over time.</p>
-        </div>
-
-        <div class="step">
-          <div class="step-num">2</div>
-          <p><strong>Use this AI prompt to generate a pattern delta for any new form.</strong> Paste it into Claude with the form attached:</p>
-          <div class="prompt-box">You are a service designer working on the GovTech Barbados forms prototyping team.
-
-Analyse the attached form against the GovTech Barbados Pattern Registry (P-01 to P-37).
-
-The registry covers two MDAs: NISSS (P-01 to P-24) and CAIPO (P-25 to P-37).
-Note the MDA context of the form you are analysing — NISSS patterns may appear in CAIPO forms and vice versa.
-
-For each section of the form, output:
-1. MATCHED — pattern ID + name (e.g. "P-02 Barbados Address Block") + note if this is cross-MDA
-2. VARIANT — pattern ID + how this instance differs from the standard (e.g. "P-04 Contact Block — Fax field added")
-3. NEW — a proposed pattern name, description, and field list not covered by any existing pattern
-
-Then output a FORM COMPLEXITY ASSESSMENT using the Form Categorisation criteria (Simple / Medium / Complex).
-
-Finally, list any OPEN QUESTIONS that should be added to the MDA question log, tagged with the relevant MDA.</div>
-        </div>
-
-        <div class="step">
-          <div class="step-num">3</div>
-          <p><strong>Update the registry after each new form.</strong> For each NEW pattern found, add it to the spreadsheet (<code>NISSS_Pattern_Registry.xlsx</code>) — noting the MDA it was found in and this HTML file with status 🔴 New. When a pattern reaches 2 occurrences, update to 🟡 Emerging. At 3, promote to 🟢 Standard. Update the occurrence counter on each existing pattern card.</p>
-        </div>
-
-        <div class="step">
-          <div class="step-num">4</div>
-          <p><strong>Connect decisions to patterns.</strong> When you log a design decision in the <a href="https://amogendukwe-png.github.io/forms-decision-log/" target="_blank">Decision Log</a> that affects a pattern, add the Pattern ID as a tag (e.g., <code>P-06</code>, <code>P-02</code>). The "View decisions" link on each pattern card above will then surface all relevant decisions automatically. Also add the Question ID (e.g., <code>Q-01</code>) as a tag when a question is answered so the log becomes searchable by question.</p>
-        </div>
-
-        <div class="step">
-          <div class="step-num">5</div>
-          <p><strong>Use the Open Questions table as your MDA prep.</strong> Before each MDA session, filter by the form being discussed and share the relevant rows. Answers come back → log in the Decision Log with the Question ID as a tag → mark the question Status as Resolved in this file.</p>
-        </div>
-      </div>
-    </div>
 
   </main>
 </div><!-- /page-layout -->
